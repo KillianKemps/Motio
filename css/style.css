@@ -42,5 +42,5 @@ li{
 #todo{
 	height:395px;
 	width:500px;
-	overflow: scroll;
+	overflow: auto;
 }
