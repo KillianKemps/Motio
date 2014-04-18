@@ -36,11 +36,14 @@ li{
 	padding-left:5px; 
 }
 #clear{
-	float: right; 
-	margin-right: 50%;
+	float: right;
+    /* margin-right: 50%; */
+    position: relative;
+    right: 60px;
 }
 #todo{
 	height:395px;
 	width:500px;
+	margin: 0 auto;
 	overflow: auto;
 }
