@@ -6,17 +6,23 @@
 		<title>MotivateMe</title>
 		<link rel="stylesheet" href="css/normalize.css"/>
 		<link rel="stylesheet" href="css/style.css"/>
+		<link rel="stylesheet" href="css/jquery-ui.css"/>
 	</head>
 	
 	<body>
 		<h1>MotivateMe</h1>
 
-		<button type="button" id="clear">Réinitialiser</button>
+		<button type="button" id="clear">Reset</button>
+		
 		<ul id="todo" contenteditable>
-			<li>Tâche à réaliser</li>
+			<li><input type="checkbox"> To do</li>
 		</ul>
 
+		<div id="itemDialog" title="Edit item">This is the content
+			<button>Add</button></div>
+
 		<script src="js/jquery-2.0.3.min.js"></script>
+		<script src="js/jquery-ui.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>

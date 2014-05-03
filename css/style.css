@@ -47,3 +47,16 @@ li{
 	margin: 0 auto;
 	overflow: auto;
 }
+/* Dialog Menu */
+/* #itemDialog{
+	background-color: white;
+}
+.ui-widget-header{
+	background-color: gray;
+}
+.ui-widget{
+	border: 1px solid black;
+} */
+#itemDialog{
+	display: none;
+}

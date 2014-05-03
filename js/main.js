@@ -2,18 +2,16 @@ $(function(){
 	var todo = document.getElementById('todo');
 	var clear = document.getElementById('clear');
 
-	// Stocker le contenu de la liste
+	// Store the list content
 	$('#todo').blur(function(){
 		localStorage.setItem('data', this.innerHTML);
 	});
 
-
-
-	// Restaure le contenu dans le code HTML
+	// Restore data into the HTML code
 	if (localStorage.getItem('data')){
 		todo.innerHTML = localStorage.getItem('data');
 	}
-	// Réinitialiser l'espace de stockage
+	// Reset storage
 	$(function(){
 		$('#clear').click(function(){
 			localStorage.clear();
@@ -21,7 +19,7 @@ $(function(){
 		});
 	});
 
-	// Ajout de classes de personnalisation
+	// Add personnalisation class
 	function couleur (){
 		$("li:contains('!')").addClass('prioritaire');
 		$("li:contains('ok')").addClass('fait');
@@ -31,6 +29,13 @@ $(function(){
 	
 	$('#todo').keyup(function (){
 		couleur();
+	})
+
+	/*Open Popup on click on item*/
+	$('li').click('on', function(){
+
+		$( "#itemDialog" ).dialog();
+
 	})
 
 });
