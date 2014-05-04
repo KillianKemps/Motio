@@ -18,13 +18,18 @@ $(function(){
 			location.reload();
 		});
 
+		//Add new task
 		$('#add-task').click(function(){
-			console.log('it works');
-			$( "#todo" ).append( "<li><input type=\"checkbox\"/> <p contenteditable=\"true\">To do</p><button type=\"button\" id=\"edit-task\" contenteditable=\"false\">Edit</button></li>" );
+			var $task = $("<li><input type=\"checkbox\"/> <p contenteditable=\"true\">To do</p></li>")
+				.append($("<button type=\"button\" id=\"edit-task\" contenteditable=\"false\">Edit</button>")
+					.click(function(){
+							$( "#item-dialog" ).dialog();
+						}));
+			$( "#todo" ).append($task);
 		});
 
 		/*Open Popup on click on item*/
-		$('#edit-task').click(function(){
+		$('#edit-task').on('click', function(){
 
 			$( "#item-dialog" ).dialog();
 
