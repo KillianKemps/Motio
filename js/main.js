@@ -20,6 +20,7 @@ $(function(){
 
 		$('#add-task').click(function(){
 			console.log('it works');
+
 			$( "#todo" ).append( "<li><input type=\"checkbox\"/> To do<button type=\"button\" id=\"edit-task\">Edit</button></li>" );
 		});
 
