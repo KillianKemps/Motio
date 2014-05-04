@@ -7,35 +7,15 @@
 html{
 	font-family: Calibri;
 }
-.prioritaire{
-	position:relative; /*background-color: red;*/
-}
-.prioritaire:after{
-	content:'';
-	position:absolute; 
-	top: 4px; 
-	bottom: 4px; 
-	right: 4px; 
-	width: 13px; 
-	background-color: red;
-}
-.fait{
-	background-color:green;
-}
-.fait:before{
-	content:'OK'; 
-	position:relative; 
-	right:40px; 
-	color: green;
-}
 li{
 	list-style-type: none;
 	background-color: blue; 
 	color:white;width:250px; 
 	margin:5px; 
 	padding-left:5px; 
+	position: relative;
 }
-#clear{
+#clear-tasks{
 	float: right;
     /* margin-right: 50%; */
     position: relative;
@@ -57,6 +37,10 @@ li{
 .ui-widget{
 	border: 1px solid black;
 } */
-#itemDialog{
+#item-dialog{
 	display: none;
+}
+#edit-task{
+	position: absolute;
+	right: 0;
 }

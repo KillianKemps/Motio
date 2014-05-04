@@ -12,14 +12,17 @@
 	<body>
 		<h1>MotivateMe</h1>
 
-		<button type="button" id="clear">Reset</button>
+		<button type="button" id="clear-tasks">Reset</button>
+		<button type="button" id="add-task">Add</button>
 		
 		<ul id="todo" contenteditable>
-			<li><input type="checkbox"> To do</li>
+			<li><input type="checkbox"/> To do<button type="button" id="edit-task">Edit</button></li>
 		</ul>
 
-		<div id="itemDialog" title="Edit item">This is the content
-			<button>Add</button></div>
+		<div id="item-dialog" title="Edit item">
+			This is the content
+			<button>Add</button>
+		</div>
 
 		<script src="js/jquery-2.0.3.min.js"></script>
 		<script src="js/jquery-ui.js"></script>

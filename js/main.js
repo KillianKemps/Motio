@@ -12,30 +12,27 @@ $(function(){
 		todo.innerHTML = localStorage.getItem('data');
 	}
 	// Reset storage
-	$(function(){
-		$('#clear').click(function(){
+//	$(function(){
+		$('#clear-tasks').click(function(){
 			localStorage.clear();
 			location.reload();
 		});
-	});
 
-	// Add personnalisation class
-	function couleur (){
-		$("li:contains('!')").addClass('prioritaire');
-		$("li:contains('ok')").addClass('fait');
-		$("li:not(:contains('!'))").removeClass('prioritaire');
-		$("li:not(:contains('ok'))").removeClass('fait');
-	};
+		$('#add-task').click(function(){
+			console.log('it works');
+			$( "#todo" ).append( "<li><input type=\"checkbox\"/> To do<button type=\"button\" id=\"edit-task\">Edit</button></li>" );
+		});
+
+		/*Open Popup on click on item*/
+		$('#edit-task').click(function(){
+
+			$( "#item-dialog" ).dialog();
+
+		});
+	//});
+
 	
-	$('#todo').keyup(function (){
-		couleur();
-	})
 
-	/*Open Popup on click on item*/
-	$('li').click('on', function(){
-
-		$( "#itemDialog" ).dialog();
-
-	})
+	
 
 });
