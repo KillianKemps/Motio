@@ -3,10 +3,16 @@ $(function(){
 	var clear = document.getElementById('clear');
 
 	// Store the list content
-	$('#todo').blur(function(){
+	$('#todo').focusout(function(){
 		localStorage.setItem('data', this.innerHTML);
+		console.log("content: ");
 	});
 
+	$('#save-tasks').on('click', function(){
+		localStorage.setItem('data', document.getElementById('todo').innerHTML);
+		console.log("content: ");
+	})
+	
 	// Restore data into the HTML code
 	if (localStorage.getItem('data')){
 		todo.innerHTML = localStorage.getItem('data');
