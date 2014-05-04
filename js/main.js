@@ -20,7 +20,7 @@ $(function(){
 
 		$('#add-task').click(function(){
 			console.log('it works');
-			$( "#todo" ).append( "<li><input type=\"checkbox\"/> To do<button type=\"button\" id=\"edit-task\" contenteditable=\"false\">Edit</button></li>" );
+			$( "#todo" ).append( "<li><input type=\"checkbox\"/> <p contenteditable=\"true\">To do</p><button type=\"button\" id=\"edit-task\" contenteditable=\"false\">Edit</button></li>" );
 		});
 
 		/*Open Popup on click on item*/
