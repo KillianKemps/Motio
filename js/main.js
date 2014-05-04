@@ -5,14 +5,12 @@ $(function(){
 	// Store the list content
 	$('#todo').focusout(function(){
 		localStorage.setItem('data', this.innerHTML);
-		console.log("content: ");
 	});
 
 	$('#save-tasks').on('click', function(){
 		localStorage.setItem('data', document.getElementById('todo').innerHTML);
-		console.log("content: ");
 	})
-	
+
 	// Restore data into the HTML code
 	if (localStorage.getItem('data')){
 		todo.innerHTML = localStorage.getItem('data');
@@ -35,11 +33,16 @@ $(function(){
 		});
 
 		/*Open Popup on click on item*/
-		$('#edit-task').on('click', function(){
+			$('#edit-task').on('click', function(){
 
-			$( "#item-dialog" ).dialog();
+				$( "#item-dialog" ).dialog();
 
-		});
+			});
+
+			/* Remove checked task */
+			$('input:checkbox').on('click', function(){
+				$(this).parent().detach();
+			})
 	//});
 
 	
