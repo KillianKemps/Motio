@@ -27,20 +27,7 @@ $(function(){
 	//Add new task
 	$('#add-task').click(function(){
 		var $task = $("<li><p contenteditable=\"true\">To do</p></li>");
-		var $taskCheckbox = $("<input type=\"checkbox\"/>").on('click', function(){
-						$(this).parent().detach();
-					if ( $(this).is( ":checked" ) ){
-						$(this).parent().appendTo("#completed-tasks");
-						$(this).attr( "checked", true );
-					}
-					else{
-						$(this).parent().appendTo("#todo");
-						$(this).attr( "checked", false );	
-					}
-					
-					localStorage.setItem('completed-tasks-data', completedTasks.innerHTML);
-					localStorage.setItem('todo-data', todo.innerHTML);
-				});
+		var $taskCheckbox = $("<input type=\"checkbox\"/>").on('click', taskCompletion);
 
 		$($taskCheckbox).prependTo($task);
 				
@@ -58,7 +45,11 @@ $(function(){
 		});
 
 		/* Remove checked task */
-		$('input:checkbox').on('click', function(){
+		$('input:checkbox').on('click', taskCompletion);
+	//});
+
+	
+		 function taskCompletion(){
 			$(this).parent().detach();
 			if ( $(this).is( ":checked" ) ){
 				$(this).parent().appendTo("#completed-tasks");
@@ -71,11 +62,7 @@ $(function(){
 			
 			localStorage.setItem('completed-tasks-data', completedTasks.innerHTML);
 			localStorage.setItem('todo-data', todo.innerHTML);
-		})
-	//});
-
-	
-
+		};
 	
 
 });
