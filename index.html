@@ -17,14 +17,14 @@
 		<button type="button" id="save-tasks">Save</button>
 		
 		<ul id="todo" >
-			<li><input type="checkbox"/> <p contenteditable="true">To do</p><button type="button" class="edit-task" contenteditable="false">Edit</button></li>
+			<li><input type="checkbox"/> <p contenteditable="true">To do</p><button type="button" class="edit-task" contenteditable="false">Edit</button><input type="text" class="task-date"/></li>
 		</ul>
 		Completed tasks:
 		<ul id="completed-tasks"></ul>
 
 		<div id="item-dialog" title="Edit task">
 			This is the content
-			<input type="text" id="setting-date">
+			<button id="dialog-validate">Validate</button>
 		</div>
 
 		<script src="js/jquery-2.0.3.min.js"></script>

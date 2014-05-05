@@ -35,22 +35,23 @@ $(function(){
 						$( "#item-dialog" ).dialog();
 					});
 		$($task).append($taskButton);
-				
+
+		var $taskDate = $('<input type="text" class="task-date"/>').datepicker();
+		$($task).append($taskDate);
+
 		$( "#todo" ).append($task);
 	});
 
 	/*Open Popup on click on item*/
 	$('.edit-task').on('click', function(){
-		$( "#item-dialog" ).dialog({
-			/* Prevent the datepicker to open on the same time */
-		    open: function(event, ui) {
-		        $('#setting-date').datepicker('enable');
-		    },
-		    close: function(event, ui) {
-		        $('#setting-date').datepicker('disable');
-		    }
+		var $currentTask = $('this').parent();
+		$( "#item-dialog" ).dialog();
+
+		$('#dialog-validate').on('click', function(){
+			$( "#item-dialog" ).dialog("close");
 		});
 	});
+
 
 	/* Move checked and unchecked tasks */
 	$('input:checkbox').on('click', taskCompletion);
@@ -70,10 +71,9 @@ $(function(){
 		localStorage.setItem('todo-data', todo.innerHTML);
 	};
 
+	/* Create a datepicker */
 	$.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );		
-	$( "#setting-date" ).datepicker({ 
-		    disabled: true 
-	});
+	$( ".task-date" ).datepicker();
 
 		
 		
