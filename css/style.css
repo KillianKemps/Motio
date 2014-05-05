@@ -46,7 +46,7 @@ li{
 #item-dialog{
 	display: none;
 }
-#edit-task{
+.edit-task{
 	position: absolute;
 	right: 0;
 	top: 0;
