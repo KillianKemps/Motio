@@ -45,6 +45,7 @@ $(function(){
 		$('input:checkbox').on('click', function(){
 			$(this).parent().detach();
 			$(this).parent().appendTo("#completed-tasks");
+			$(this).attr( "checked", true );
 			localStorage.setItem('completed-tasks-data', completedTasks.innerHTML);
 			localStorage.setItem('todo-data', todo.innerHTML);
 		})
