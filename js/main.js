@@ -40,29 +40,41 @@ $(function(){
 	});
 
 	/*Open Popup on click on item*/
-		$('.edit-task').on('click', function(){
-			$( "#item-dialog" ).dialog();
+	$('.edit-task').on('click', function(){
+		$( "#item-dialog" ).dialog({
+			/* Prevent the datepicker to open on the same time */
+		    open: function(event, ui) {
+		        $('#setting-date').datepicker('enable');
+		    },
+		    close: function(event, ui) {
+		        $('#setting-date').datepicker('disable');
+		    }
 		});
+	});
 
-		/* Remove checked task */
-		$('input:checkbox').on('click', taskCompletion);
-	//});
+	/* Move checked and unchecked tasks */
+	$('input:checkbox').on('click', taskCompletion);
 
-	
-		 function taskCompletion(){
-			$(this).parent().detach();
-			if ( $(this).is( ":checked" ) ){
-				$(this).parent().appendTo("#completed-tasks");
-				$(this).attr( "checked", true );
-			}
-			else{
-				$(this).parent().appendTo("#todo");
-				$(this).attr( "checked", false );	
-			}
-			
-			localStorage.setItem('completed-tasks-data', completedTasks.innerHTML);
-			localStorage.setItem('todo-data', todo.innerHTML);
-		};
-	
+	 function taskCompletion(){
+		$(this).parent().detach();
+		if ( $(this).is( ":checked" ) ){
+			$(this).parent().appendTo("#completed-tasks");
+			$(this).attr( "checked", true );
+		}
+		else{
+			$(this).parent().appendTo("#todo");
+			$(this).attr( "checked", false );	
+		}
+		
+		localStorage.setItem('completed-tasks-data', completedTasks.innerHTML);
+		localStorage.setItem('todo-data', todo.innerHTML);
+	};
 
+	$.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );		
+	$( "#setting-date" ).datepicker({ 
+		    disabled: true 
+	});
+
+		
+		
 });
