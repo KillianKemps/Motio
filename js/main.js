@@ -44,8 +44,15 @@ $(function(){
 		/* Remove checked task */
 		$('input:checkbox').on('click', function(){
 			$(this).parent().detach();
-			$(this).parent().appendTo("#completed-tasks");
-			$(this).attr( "checked", true );
+			if ( $(this).is( ":checked" ) ){
+				$(this).parent().appendTo("#completed-tasks");
+				$(this).attr( "checked", true );
+			}
+			else{
+				$(this).parent().appendTo("#todo");
+				$(this).attr( "checked", false );	
+			}
+			
 			localStorage.setItem('completed-tasks-data', completedTasks.innerHTML);
 			localStorage.setItem('todo-data', todo.innerHTML);
 		})
