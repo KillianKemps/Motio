@@ -1,21 +1,30 @@
 $(function(){
-	var todo = document.getElementById('todo');
-	var completedTasks = document.getElementById('completed-tasks');
-	var clear = document.getElementById('clear');
+	var todo = $('#todo');
+	var completedTasks = $('#completed-tasks');
+	var clear = $('#clear');
+	var data = [];	
 
 	// Store the list content
 	$('#todo').focusout(function(){
-		localStorage.setItem('todo-data', this.innerHTML);
+		localStorage.setItem('todo-data', this.html);
 	});
 
 	$('#save-tasks').on('click', function(){
-		localStorage.setItem('todo-data', document.getElementById('todo').innerHTML);
+		for (var i = 0; i < $('#todo li').length; i++) {
+			data[i] = {};
+			data[i].text = $('#todo li').eq(i).children('p').html();
+			data[i].date = $('#todo li').eq(i).children('.hasDatepicker').val();
+		};
+		localStorage.setItem('todo-data', JSON.stringify(data));
 	})
 
 	// Restore data into the HTML code
 	if (localStorage.getItem('todo-data')){
-		todo.innerHTML = localStorage.getItem('todo-data');
-		completedTasks.innerHTML = localStorage.getItem('completed-tasks-data');
+		var donnee = JSON.parse( localStorage.getItem('todo-data'));
+		for (var i = 0; i < donnee.length; i++){
+			todo.append('<li><input type="checkbox"/> <p contenteditable="true">'+ donnee[i].text +'</p><button type="button" class="edit-task" contenteditable="false">Edit</button><input type="text" class="task-date" value="'+ donnee[i].date +'" /></li>');
+		}
+		completedTasks.html = localStorage.getItem('completed-tasks-data');
 	}
 	// Reset storage
 //	$(function(){
@@ -44,7 +53,7 @@ $(function(){
 
 	/*Open Popup on click on item*/
 	$('.edit-task').on('click', function(){
-		var $currentTask = $('this').parent();
+		var $currentTask = $(this).parent();
 		$( "#item-dialog" ).dialog();
 
 		$('#dialog-validate').on('click', function(){
@@ -67,8 +76,8 @@ $(function(){
 			$(this).attr( "checked", false );	
 		}
 		
-		localStorage.setItem('completed-tasks-data', completedTasks.innerHTML);
-		localStorage.setItem('todo-data', todo.innerHTML);
+		localStorage.setItem('completed-tasks-data', completedTasks.html);
+		localStorage.setItem('todo-data', todo.html);
 	};
 
 	/* Create a datepicker */
