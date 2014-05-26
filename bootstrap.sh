@@ -7,5 +7,5 @@ cd /vagrant
 #npm install
 #echo "---bower install"
 #bower install
-echo "---Running Server on 192.168.33.10"
+echo "---Running Server on 192.168.42.42"
 node server.js
