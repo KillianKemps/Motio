@@ -1,1 +1,1 @@
-angular.module('motivateMeApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'NerdService', 'GeekCtrl', 'GeekService']);
+angular.module('motivateMeApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'ParametersCtrl', 'ParametersService', 'GeekCtrl', 'GeekService']);
