@@ -14,6 +14,7 @@ How to develop for MotivateMe:
 	use motivatemedb
 	db.usercollection.insert({ "username" : "testuser1", "email" : "testuser1@testdomain.com" })
 	exit
+
 '''
 
 - Finally start mongoDB
