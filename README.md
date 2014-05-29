@@ -7,21 +7,16 @@ How to develop for MotivateMe:
 - Install Vagrant and VirtualBox if you haven't before
 - Go in the git directory and issue 'vagrant up'
 - Then for setting up mongoDB do the following commands:
-
-    vagrant ssh
-    mongo
-    use motivatemedb
-    db.usercollection.insert({ "username" : "testuser1", "email" : "testuser1@testdomain.com" })
-    exit
-
+    'vagrant ssh'
+    'mongo'
+    'use motivatemedb'
+    'db.usercollection.insert({ "username" : "testuser1", "email" : "testuser1@testdomain.com" })'
+    'exit'
 - Finally start mongoDB
-
-    sudo /etc/init.d/mongod start
-
+    'sudo /etc/init.d/mongod start'
 - And then Node
-
-    cd /vagrant
-    node serve.js
+    'cd /vagrant'
+    'node serve.js'
 
 Or
 
