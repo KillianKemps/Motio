@@ -1,1 +1,1 @@
-angular.module('motivateMeApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'AdministrationCtrl', 'AdministrationService', 'ConnectCtrl', 'ConnectService', 'RegisterCtrl', 'RegisterService']);
+angular.module('motivateMeApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'AdministrationCtrl', 'AdministrationService', 'LoginCtrl', 'LoginService', 'RegisterCtrl', 'RegisterService']);

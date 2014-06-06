@@ -13,9 +13,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'AdministrationController'
 		})
 
-		.when('/connect', {
-			templateUrl: 'views/connect.html',
-			controller: 'ConnectController'	
+		.when('/login', {
+			templateUrl: 'views/login.html',
+			controller: 'LoginController'	
 		})
 
 		.when('/register', {
