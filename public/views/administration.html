@@ -2,17 +2,36 @@
 	<h1>Administration</h1>
 
 	<p>{{ tagline }}</p>
-	<ul>
-		<li>Name</li>
-		<li>Password</li>
-		<li>Email</li>
-		<li>Disable user session</li>
-		<li>Disable local storage</li>
-		<li>Module list:
-			<ul>
-				<li>Module Name</li>
-			</ul>
-		</li>
-		<li>Kernel version</li>
-	</ul>
+	
 </div>
+
+<form class="jumbotron">
+<ul>
+	<li>Name: <b>{{pseudo}}</b> <button class="btn btn-info btn-mini">Edit</button></li>
+	<li><button class="btn btn-warning btn-mini">Change Password</button></li>
+	<li>Email: <b>{{email}}</b> <button class="btn btn-info btn-mini">Edit</button></li>
+	<li> 
+		<label class="checkbox">
+			<input type="checkbox"> Disable user session
+		</label>
+	</li>
+	<li> 
+		<label class="checkbox">
+			<input type="checkbox"> Disable local storage
+		</label>
+	</li>
+	<li>Module list:
+	    <dl class="dl-horizontal" ng-repeat="module in modulelist">
+	    <dt>{{module.name}}</dt>
+	    <dd>{{module.snippet}}</dd>
+	    </dl>  
+	</li>
+	</li>
+	<li>Kernel version: <b>{{kernelversion}}</b></li>
+</ul>
+
+<div class="form-actions">
+    <button type="submit" class="btn btn-primary">Save changes</button>
+    <button type="button" class="btn">Cancel</button>
+</div>
+</form>
