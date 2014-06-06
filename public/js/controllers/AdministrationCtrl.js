@@ -4,7 +4,7 @@ administrationController.controller('AdministrationController', function($scope)
 
 	$scope.tagline = 'Here\'s where you will be able to change parameters !';
 
-	$scope.pseudo = 'John Doe';
+	$scope.username = 'John Doe';
 
 	$scope.email = 'myemail@home.test';
 
