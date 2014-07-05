@@ -3,3 +3,15 @@
 
 	<p>{{ tagline }}</p>
 </div>
+
+<div class="jumbotron text-center">
+	<h2>Your todo</h2>
+
+	<ul class="unstyled">
+		<li ng-repeat="item in items" >{{item.done}}  <input ng-model="item.done" type="checkbox"/>  {{item.text}}</li>
+	</ul>
+	<form class="form-horizontal">
+		<input type="text" ng-model="formTodoText" ng-model-instant>
+		<button class="btn" ng-click="addTask()"><i class="icon-plus"></i>Add a task</button>
+	</form>
+</div>
