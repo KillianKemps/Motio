@@ -11,5 +11,6 @@ angular.module('MainCtrl', []).controller('MainController', function($scope) {
 	$scope.addTask = function(){
 		var item = {text: $scope.formTodoText, done: false};
 		$scope.items.push(item);
+		$scope.formTodoText = '';
 	}
 });
