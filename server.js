@@ -41,10 +41,11 @@ db.once('open', function callback () {
 	var fluffy = new Kitten({ name: 'fluffy' });
 	fluffy.speak(); // "Meow name is fluffy"
 	//Save the documents in MongoDB
-	fluffy.save(function (err, fluffy) {
+	//Disabled not to spam when launching server
+	/*fluffy.save(function (err, fluffy) {
 	  if (err) return console.error(err);
 	  fluffy.speak();
-	});
+	});*/
 
 	//Searching all kittens
 	Kitten.find(function (err, kittens) {
