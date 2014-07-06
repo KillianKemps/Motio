@@ -13,8 +13,16 @@ angular.module('mainModule', []).controller('MainController', ['$scope','Task', 
   	}); //query() returns all the entries
 
 	$scope.addTask = function(){
-		var item = {text: $scope.formTodoText, done: false};
+		var item = new Task({
+			text: $scope.formTodoText,
+			done: false
+		});
+		 
+		Task.save(item, function (response) {
+			console.log(response);
+		});
 		$scope.items.push(item);
 		$scope.formTodoText = '';
 	}
+
 }]);
