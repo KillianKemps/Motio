@@ -1,5 +1,5 @@
 
 
-angular.module('mainModule').factory('Task', function($resource) {
-  return $resource('/api/todo/:taskId'); // Note the full endpoint address
+angular.module('mainModule').factory('Todo', function($resource) {
+  return $resource('/api/todo/:todoId'); // Note the full endpoint address
 });

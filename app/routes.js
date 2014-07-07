@@ -1,12 +1,12 @@
 module.exports = function(app) {
 
-	var tasks = require('./models/tasks');
+	var todo = require('./models/todo');
 
-	app.param('taskId', tasks.task);
+	app.param('todoId', todo.todo);
  
 	
-	app.get('/api/todo', tasks.all);
-	app.post('/api/todo', tasks.create);
+	app.get('/api/todo', todo.all);
+	app.post('/api/todo', todo.create);
 	// server routes ===========================================================
 	// handle things like api calls
 	// authentication routes
