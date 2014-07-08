@@ -2,15 +2,9 @@ angular.module('mainModule', []).controller('MainController', ['$scope','Todo', 
 
 	$scope.tagline = 'Your Future is created by what you do today not tomorrow';	
 
-	/*$scope.items = [
-		{text:  'Todo 1', done:'false'},
-		{text:  'Todo 2', done:'true'},
-		{text:  'Todo 3', done:'true'}
-	];*/
-
+	//query() returns all the entries
 	$scope.items = Todo.query(function() {
-    	//console.log(entries);
-  	}); //query() returns all the entries
+  	}); 
 
 	$scope.addTodo = function(){
 		var item = new Todo({
@@ -19,7 +13,7 @@ angular.module('mainModule', []).controller('MainController', ['$scope','Todo', 
 		});
 		 
 		Todo.save(item, function (response) {
-			// store this item who now got an mongo id
+			// store this item who now got a mongo id
 			$scope.items.push(response);
 		});
 		
@@ -32,12 +26,12 @@ angular.module('mainModule', []).controller('MainController', ['$scope','Todo', 
 			$scope.item.done = done;
 			$scope.item.$update(function(response) {
 			});
+			// if the task is completed then delete
 			if(done == true)
 			{
 				$scope.removeTodo($scope.item, angularId);
 			}
-		});
-		
+		});	
 	}
 
 	$scope.removeTodo = function(item, id){
