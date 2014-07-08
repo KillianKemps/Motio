@@ -27,13 +27,18 @@ angular.module('mainModule', []).controller('MainController', ['$scope','Todo', 
 		console.log(item);
 	}
 
-	$scope.updateTodo = function(id, done){
-		$scope.item = Todo.get({ todoId: id }, function() {
+	$scope.updateTodo = function(_id, done, angularId){
+		$scope.item = Todo.get({ todoId: _id }, function() {
 			// $scope.item is fetched from server and is an instance of Todo
 			$scope.item.done = done;
-			$scope.item.$update(function() {
+			$scope.item.$update(function(response) {
 			});
+			if(done == true)
+			{
+				$scope.removeTodo($scope.item, angularId);
+			}
 		});
+		
 	}
 
 	$scope.removeTodo = function(item, id){
