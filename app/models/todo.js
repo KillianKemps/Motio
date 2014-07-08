@@ -62,3 +62,15 @@ exports.update = function(req, res) {
     res.json(updatedTodo);
   });
 };
+
+/**
+ * Remove a todo
+ */
+exports.remove = function(req, res) {
+  var todo = req.todo;
+ 
+  todo.remove(function(err) {
+    if (err) return res.json(500, err);
+    res.json(todo);   
+  });
+};
