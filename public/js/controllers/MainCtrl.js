@@ -19,10 +19,12 @@ angular.module('mainModule', []).controller('MainController', ['$scope','Todo', 
 		});
 		 
 		Todo.save(item, function (response) {
-			console.log(response);
+			// store this item who now got an mongo id
+			$scope.items.push(response);
 		});
-		$scope.items.push(item);
+		
 		$scope.formTodoText = '';
+		console.log(item);
 	}
 
 	$scope.updateTodo = function(id, done){
