@@ -24,7 +24,6 @@ angular.module('mainModule', []).controller('MainController', ['$scope','Todo', 
 		});
 		
 		$scope.formTodoText = '';
-		console.log(item);
 	}
 
 	$scope.updateTodo = function(_id, done, angularId){
