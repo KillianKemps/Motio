@@ -25,4 +25,22 @@ angular.module('mainModule', []).controller('MainController', ['$scope','Todo', 
 		$scope.formTodoText = '';
 	}
 
+	/*if($scope.items[].done == true)
+	{
+		alert('its true');
+	}*/
+
+	$scope.updateTodo = function(id, done){
+		$scope.item = Todo.get({ todoId: id }, function() {
+			// $scope.entry is fetched from server and is an instance of Entry
+			$scope.item.done = done;
+			$scope.item.$update(function() {
+			});
+		});
+	}
+ 	
+ 	/*$scope.$watch('$scope.item.done', function () {
+ 		console.log('changes');
+	}, true);*/
+
 }]);

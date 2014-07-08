@@ -6,7 +6,9 @@ module.exports = function(app) {
  
 	
 	app.get('/api/todo', todo.all);
+	app.get('/api/todo/:todoId', todo.show)
 	app.post('/api/todo', todo.create);
+	app.put('/api/todo/:todoId', todo.update);
 	// server routes ===========================================================
 	// handle things like api calls
 	// authentication routes

@@ -35,6 +35,13 @@ exports.todo = function(req, res, next, id) {
 };
 
 /**
+ * Show a todo
+ */
+exports.show = function(req, res) {
+  res.json(req.todo);
+};
+
+/**
  * Create a todo
  */
 exports.create = function(req, res) {
@@ -43,5 +50,15 @@ exports.create = function(req, res) {
   todo.save(function(err) {
     if (err) return res.json(500, err);
     res.json(todo);
+  });
+};
+
+/**
+ * Update a todo
+ */
+exports.update = function(req, res) {
+  Todo.update({ _id: req.todo._id }, req.body, { }, function(err, updatedTodo) {
+    if (err) return res.json(500, err);
+    res.json(updatedTodo);
   });
 };
