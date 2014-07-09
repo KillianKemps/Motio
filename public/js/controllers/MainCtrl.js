@@ -20,17 +20,32 @@ angular.module('mainModule', []).controller('MainController', ['$scope','Todo', 
 		$scope.formTodoText = '';
 	}
 
-	$scope.updateTodo = function(_id, done, angularId){
+	$scope.updateTodo = function(_id, element, update, angularId){
 		$scope.item = Todo.get({ todoId: _id }, function() {
 			// $scope.item is fetched from server and is an instance of Todo
-			$scope.item.done = done;
-			$scope.item.$update(function(response) {
-			});
-			// if the task is completed then delete
-			if(done == true)
-			{
-				$scope.removeTodo($scope.item, angularId);
+			if(element == 'done'){
+				$scope.item.done = update;
+
+				$scope.item.$update(function(response) {
+				});
+				// if the task is completed then delete
+				if(update == true)
+				{
+					$scope.removeTodo($scope.item, angularId);
+				}
 			}
+			else if(element == 'priority'){
+				$scope.item.priority = update;
+				console.log(update);
+				$scope.item.$update(function(response) {
+				});
+
+
+			}
+			else{
+
+			}
+			
 		});	
 	}
 

@@ -8,7 +8,11 @@
 	<h2>Your todo</h2>
 
 	<ul class="unstyled">
-		<li ng-repeat="(id, item) in items" ><input ng-model="item.done" ng-change="updateTodo(item._id, item.done, id)" type="checkbox" />  {{item.text}}  <button ng-click="removeTodo(item, id)">Delete</button></li>
+		<li ng-repeat="(id, item) in items" >
+			<input ng-model="item.done" ng-change="updateTodo(item._id, 'done', item.done, id)" type="checkbox" />  {{item.text}}  |
+			Priority: <input ng-model="item.priority" ng-change="updateTodo(item._id, 'priority', item.priority, id)" type="checkbox" />
+			<button ng-click="removeTodo(item, id)">Delete</button>
+		</li>
 	</ul>
 	<form class="form-horizontal">
 		<input type="text" ng-model="formTodoText" ng-model-instant>
