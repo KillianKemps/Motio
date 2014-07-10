@@ -9,11 +9,12 @@ sudo add-apt-repository ppa:chris-lea/node.js
 sudo apt-get update
 sudo apt-get install nodejs
 
+cd /vagrant
 sudo npm -g install karma
 sudo npm install --save-dev karma-chai
 #apt-get install -y nodejs npm mongodb-org
 
-cd /vagrant
+
 #echo "---npm install"
 #npm install
 #echo "---bower install"
