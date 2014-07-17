@@ -8,12 +8,6 @@ echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | 
 #sudo add-apt-repository ppa:chris-lea/node.js
 sudo apt-get update
 apt-get install -y mongodb-org
-echo "--Installing NVM for Node"
-curl https://raw.githubusercontent.com/creationix/nvm/v0.11.0/install.sh | bash
-gnome-terminal -x "nvm install 0.10"
-gnome-terminal -x "npm cache clear"
-gnome-terminal -x "npm install -g karma --save-dev"
-gnome-terminal -x "npm install -g karma-cli --save-dev"
 #sudo apt-get install nodejs
 #apt-get install -y nodejs npm mongodb-org
 

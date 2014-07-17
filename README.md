@@ -9,14 +9,21 @@ How to develop for MotivateMe:
 - Then for setting up mongoDB do the following commands:
     'vagrant ssh'
     'mongo'
-    'use motivatemedb'
-    'db.usercollection.insert({ "username" : "testuser1", "email" : "testuser1@testdomain.com" })'
+    'curl https://raw.githubusercontent.com/creationix/nvm/v0.11.0/install.sh | bash'
     'exit'
-- Finally start mongoDB
+    'vagrant ssh'
+    'nvm install 0.10'
+    'npm cache clear'
+    'npm install -g karma --save-dev'
+    'npm install -g karma-cli --save-dev'
+
+- To start mongoDB
     'sudo /etc/init.d/mongod start'
 - And then Node
     'cd /vagrant'
-    'node serve.js'
+    'node server.js'
+- For testing
+    'karma start'
 
 Or
 
