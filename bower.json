@@ -1,9 +1,13 @@
 {
-	"name": "nagular",
-	"version": "1.0.0",
+	"name": "motivateme",
+  	"version": "0.1.0",
 	"dependencies": {
 		"bootstrap": "latest",
 		"angular": "latest",
 		"angular-route": "latest"	
-	}
+	},
+	"devDependencies": {
+		"angular-mock": "latest"
+	},
+	"private": true
 }
