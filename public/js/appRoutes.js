@@ -4,22 +4,22 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
 		// home page
 		.when('/', {
-			templateUrl: 'views/home.html',
+			templateUrl: 'TodoModule/home.html',
 			controller: 'TodoController'
 		})
 
 		.when('/administration', {
-			templateUrl: 'views/administration.html',
+			templateUrl: 'AdministrationModule/administration.html',
 			controller: 'AdministrationController'
 		})
 
 		.when('/login', {
-			templateUrl: 'views/login.html',
+			templateUrl: 'LoginModule/login.html',
 			controller: 'LoginController'	
 		})
 
 		.when('/signup', {
-			templateUrl: 'views/signup.html',
+			templateUrl: 'SignupModule/signup.html',
 			controller: 'SignupController'	
 		});
 
