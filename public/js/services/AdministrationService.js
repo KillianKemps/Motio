@@ -1,4 +1,4 @@
-angular.module('AdministrationService', []).factory('Administration', ['$http', function($http) {
+angular.module('administrationModule').factory('Administration', ['$http', function($http) {
 
 	
 

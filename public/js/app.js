@@ -1,1 +1,1 @@
-angular.module('motivateMeApp', ['ngRoute', 'ngResource', 'appRoutes', 'todoModule', 'AdministrationCtrl', 'AdministrationService', 'LoginCtrl', 'LoginService', 'SignupCtrl', 'SignupService']);
+angular.module('motivateMeApp', ['ngRoute', 'ngResource', 'appRoutes', 'todoModule', 'administrationModule', 'LoginModule', 'SignupModule']);
