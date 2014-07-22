@@ -4,7 +4,7 @@ describe("hello", function(){
 	})
 })
 
-describe("MainController", function(){
+describe("TodoController", function(){
 	beforeEach(module('motivateMeApp'));
 
 	var ctrl, scope;
@@ -14,7 +14,7 @@ describe("MainController", function(){
 		// Create a new scope that's a child of the $rootScope
 	    scope = $rootScope.$new();
 	    // Create the controller
-	    ctrl = $controller('MainController', {
+	    ctrl = $controller('TodoController', {
 	      $scope: scope
 		});
 	}));

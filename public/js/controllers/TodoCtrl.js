@@ -1,4 +1,4 @@
-angular.module('mainModule', []).controller('MainController', ['$scope','Todo', function($scope, Todo) {
+angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', function($scope, Todo) {
 
 	$scope.tagline = 'Your Future is created by what you do today not tomorrow';	
 
