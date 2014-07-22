@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Thu Jul 17 2014 20:49:27 GMT+0000 (UTC)
+// Generated on Fri Jul 18 2014 20:49:37 GMT+0000 (UTC)
 
 module.exports = function(config) {
   config.set({
@@ -15,11 +15,28 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'public/libs/angular/angular.js',
+      'public/libs/angular-route/angular-route.js',
+      'public/libs/angular-resource.min.js',
+      'public/libs/angular-mocks.js',
+      'tests/MainCtrl.tests.js',
+      'public/js/app.js',
+      'public/js/appRoutes.js',
+      'public/js/controllers/MainCtrl.js',
+      'public/js/controllers/AdministrationCtrl.js',
+      'public/js/controllers/LoginCtrl.js',
+      'public/js/controllers/SignupCtrl.js',
+      'public/js/services/MainService.js',
+      'public/js/services/AdministrationService.js',
+      'public/js/services/LoginService.js',
+      'public/js/services/SignupService.js',
+      
     ],
 
 
     // list of files to exclude
     exclude: [
+        'public/libs/bootstrap/*.js'
     ],
 
 
