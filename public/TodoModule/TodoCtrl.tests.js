@@ -1,9 +1,3 @@
-describe("hello", function(){
-	it("should work", function (){
-		expect(true).toBe(true)
-	})
-})
-
 describe("TodoController", function(){
 	beforeEach(module('motivateMeApp'));
 
@@ -39,4 +33,32 @@ describe("TodoController", function(){
   		scope.updateTodo();
 		expect(scope.item).toBeDefined();
   	});
-})
+});
+
+describe("Datepicker in TodoController", function(){
+	beforeEach(module('motivateMeApp'));
+
+	var ctrl, scope;
+	// inject the $controller and $rootScope services
+	// in the beforeEach block
+	beforeEach(inject(function($controller, $rootScope) {
+		// Create a new scope that's a child of the $rootScope
+	    scope = $rootScope.$new();
+	    // Create the controller
+	    ctrl = $controller('TodoController', {
+	      $scope: scope
+		});
+	}));
+
+	it('should define todays date', function(){
+		scope.today();
+		expect(scope.dt).toBeDefined();
+	});
+
+	it('should clear todays date', function(){
+		scope.today();
+		scope.clear();
+		expect(scope.dt).toBeNull();
+	});
+
+});

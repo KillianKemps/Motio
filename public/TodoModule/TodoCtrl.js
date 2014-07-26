@@ -56,8 +56,11 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 		// remove item from view
 		$scope.items.splice(id, 1)
 	}
-
+	
+	/****************/
 	/** DatePicker **/
+	/****************/
+
 	$scope.today = function() {
 		$scope.dt = new Date();
 	};
@@ -85,7 +88,7 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 		$scope.opened[id] = true;
 	};
 
-		$scope.dateOptions = {
+	$scope.dateOptions = {
 		formatYear: 'yy',
 		startingDay: 1
 	};
