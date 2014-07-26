@@ -11,6 +11,11 @@
 		<li ng-repeat="(id, item) in items" >
 			<input ng-model="item.done" ng-change="updateTodo(item._id, 'done', item.done, id)" type="checkbox" />  {{item.text}}  |
 			Priority: <input ng-model="item.priority" ng-change="updateTodo(item._id, 'priority', item.priority, id)" type="checkbox" />
+			Due date:
+			<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened[$index]" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event, id)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
 			<button ng-click="removeTodo(item, id)">Delete</button>
 		</li>
 	</ul>
