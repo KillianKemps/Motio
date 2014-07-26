@@ -9,6 +9,8 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 	$scope.addTodo = function(){
 		var item = new Todo({
 			text: $scope.formTodoText,
+			priority: $scope.formTodoPriority,
+			dueDate: $scope.formTodoDueDate,
 			done: false
 		});
 		 
@@ -100,5 +102,11 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 	$scope.initDate = new Date('2016-15-20');
 	$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 	$scope.format = $scope.formats[0];
+
+	$scope.formTodoDatepickerOpen = function($event){
+		$event.preventDefault();
+		$event.stopPropagation();
+		$scope.formTodoOpened = true;
+	};
 
 }]);

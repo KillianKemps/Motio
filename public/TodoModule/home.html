@@ -20,7 +20,13 @@
 		</li>
 	</ul>
 	<form class="form-horizontal">
-		<input type="text" ng-model="formTodoText" ng-model-instant>
+		<input type="text" ng-model="formTodoText" ng-model-instant><br />
+		Priority: <input ng-model="formTodoPriority" type="checkbox" ng-model-instant> <br />
+		Due date:
+		<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model-instant ng-model="formTodoDueDate" is-open="formTodoOpened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="Close" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="formTodoDatepickerOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span><br />
 		<button class="btn" ng-click="addTodo()"><i class="icon-plus"></i>Add a task</button>
 	</form>
 </div>
