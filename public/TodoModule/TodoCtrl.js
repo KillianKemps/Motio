@@ -39,11 +39,15 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 				console.log(update);
 				$scope.item.$update(function(response) {
 				});
-
-
+			}
+			else if(element == 'dueDate'){
+				$scope.item.dueDate = update;
+				console.log(update);
+				$scope.item.$update(function(response) {
+				});
 			}
 			else{
-
+				console.log("Error: No such update");
 			}
 			
 		});	
@@ -56,7 +60,7 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 		// remove item from view
 		$scope.items.splice(id, 1)
 	}
-	
+
 	/****************/
 	/** DatePicker **/
 	/****************/
@@ -96,6 +100,5 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 	$scope.initDate = new Date('2016-15-20');
 	$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 	$scope.format = $scope.formats[0];
- 	
 
 }]);

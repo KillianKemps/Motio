@@ -8,7 +8,7 @@ var todoSchema = mongoose.Schema({
 	text: String,
 	done: Boolean,
 	priority: Boolean,
-  dueDate: String
+  dueDate: Date
 });
 
 
