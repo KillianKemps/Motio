@@ -2,6 +2,10 @@
   "name": "motivateme",
   "main": "server.js",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/KillianKemps/MotivateMe.git"
+  },
   "dependencies": {
     "express": "~3.4.8",
     "mongoose": "~3.6.13",
