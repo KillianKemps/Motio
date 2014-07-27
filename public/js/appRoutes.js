@@ -4,7 +4,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
 		// home page
 		.when('/', {
-			templateUrl: 'TodoModule/home.html',
+			templateUrl: 'TodoModule/todo.html',
 			controller: 'TodoController'
 		})
 
