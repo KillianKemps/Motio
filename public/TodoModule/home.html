@@ -9,20 +9,46 @@
 
 	<ul class="unstyled">
 		<li ng-repeat="(id, item) in items" >
-			<input ng-model="item.done" ng-change="updateTodo(item._id, 'done', item.done, id)" type="checkbox" />  {{item.text}}  |
-			Priority: <input ng-model="item.priority" ng-change="updateTodo(item._id, 'priority', item.priority, id)" type="checkbox" />
+			<input ng-model="item.done" ng-change="updateTodo(item._id, 'done', item.done, id)" type="checkbox" />  {{item.text}}
+
+			<div ng-controller="DropdownController" class="btn-group" dropdown is-open="status.isopen[$index]">
+		      <button type="button" class="btn btn-primary dropdown-toggle" ng-model-instant>
+		        Priority: {{item.priority}} <span class="caret"></span>
+		      </button>
+		      <ul class="dropdown-menu" role="menu">
+		        <li><a href="#" ng-click="updateTodo(item._id, 'priority', 0, id)"> No priority</a></li>
+		        <li><a href="#" ng-click="updateTodo(item._id, 'priority', 1, id)"> Priority 1</a></li>
+		        <li><a href="#" ng-click="updateTodo(item._id, 'priority', 2, id)"> Priority 2</a></li>
+		        <li><a href="#" ng-click="updateTodo(item._id, 'priority', 3, id)"> Priority 3</a></li>
+		      </ul>
+		    </div><br />
+
 			Due date:
 			<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="item.dueDate" is-open="opened[$index]" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="Close" ng-change="updateTodo(item._id, 'dueDate', item.dueDate, id)" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event, id)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
+
 			<button ng-click="removeTodo(item, id)">Delete</button>
 		</li>
 	</ul>
 	<form class="form-horizontal">
 		<h2>Add a todo:</h2>
+
 		Todo : <input type="text" ng-model="formTodoText" ng-model-instant><br />
-		Priority: <input ng-model="formTodoPriority" type="checkbox" ng-model-instant> <br />
+
+		<div ng-controller="DropdownController" class="btn-group" dropdown is-open="status.isopen[-1]">
+	      <button type="button" class="btn btn-primary dropdown-toggle">
+	        Priority: {{formTodoPriority}} <span class="caret"></span>
+	      </button>
+	      <ul class="dropdown-menu" role="menu">
+	        <li><a href="#" ng-click="addPriority(0)">No priority</a></li>
+	        <li><a href="#" ng-click="addPriority(1)">Priority 1</a></li>
+	        <li><a href="#" ng-click="addPriority(2)">Priority 2</a></li>
+	        <li><a href="#" ng-click="addPriority(3)">Priority 3</a></li>
+	      </ul>
+	    </div><br />
+
 		Due date:
 		<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model-instant ng-model="formTodoDueDate" is-open="formTodoOpened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="Close" />
           <span class="input-group-btn">

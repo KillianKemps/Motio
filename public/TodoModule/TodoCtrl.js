@@ -13,7 +13,7 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 			dueDate: $scope.formTodoDueDate,
 			done: false
 		});
-		 
+
 		Todo.save(item, function (response) {
 			// store this item who now got a mongo id
 			$scope.items.push(response);
@@ -38,6 +38,8 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 			}
 			else if(element == 'priority'){
 				$scope.item.priority = update;
+				// refresh the view
+				$scope.items[angularId].priority = update;
 				console.log(update);
 				$scope.item.$update(function(response) {
 				});
@@ -109,4 +111,27 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 		$scope.formTodoOpened = true;
 	};
 
+	/****************/
+	/** Dropdown   **/
+	/****************/
+
+  	$scope.status = {
+		isopen: []
+	};
+
+	$scope.toggled = function(open) {
+		console.log('Dropdown is now: ', open);
+	};
+
+	$scope.toggleDropdown = function($event, id) {
+		$event.preventDefault();
+		$event.stopPropagation();
+		$scope.status.isopen[id] = !$scope.status.isopen[id];
+	};
+
+	$scope.addPriority = function(priorityLevel){
+		$scope.formTodoPriority = priorityLevel;
+	};
+
 }]);
+
