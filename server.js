@@ -4,6 +4,8 @@ var app     	= express();
 var mongoose	= require('mongoose');
 var passport 	= require('passport');
 var session     = require('express-session');
+var flash 	 	= require('connect-flash');
+var cookieParser = require('cookie-parser');
 
 // configuration ===========================================
 	
@@ -70,6 +72,8 @@ app.configure(function() {
         resave: true })); // session secret
 	app.use(passport.initialize());
 	app.use(passport.session()); // persistent login sessions
+	app.use(flash()); // use connect-flash for flash messages stored in session
+	app.use(cookieParser()); // read cookies (needed for auth)
 });
 
 // routes ==================================================

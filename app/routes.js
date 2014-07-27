@@ -13,10 +13,10 @@ module.exports = function(app) {
 	app.put('/api/todo/:todoId', todo.update);
 	app.del('/api/todo/:todoId', todo.remove);
 
-	/*****************/
-	/** Sign Up API **/
-	/*****************/
-
+	// server routes ===========================================================
+	// handle things like api calls
+	// authentication routes
+	// 
 	var user = require('./models/user.js');
 	var passport = require('passport');
 
@@ -24,10 +24,16 @@ module.exports = function(app) {
 	app.post('/signup', passport.authenticate('local-signup', {
 		successRedirect : '/', // redirect to the secure profile section
 		failureRedirect : '/signup', // redirect back to the signup page if there is an error
+		failureFlash : true // allow flash messages
 	}));
-	// server routes ===========================================================
-	// handle things like api calls
-	// authentication routes
+
+
+	// process the login form
+	app.post('/login', passport.authenticate('local-login', {
+		successRedirect : '/', // redirect to the secure profile section
+		failureRedirect : '/login', // redirect back to the signup page if there is an error
+		failureFlash : true // allow flash messages
+	}));
 
 	// frontend routes =========================================================
 	// route to handle all angular requests
