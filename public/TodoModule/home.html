@@ -24,7 +24,7 @@
 		    </div><br />
 
 			Due date:
-			<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="item.dueDate" is-open="opened[$index]" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="Close" ng-change="updateTodo(item._id, 'dueDate', item.dueDate, id)" />
+			<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="item.dueDate" is-open="opened[$index]" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="Close" ng-change="updateTodo(item._id, 'dueDate', item.dueDate, id)" ng-click="open($event, id)" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event, id)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
