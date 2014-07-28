@@ -33,16 +33,20 @@ module.exports = function(app) {
 		failureFlash : true // allow flash messages
 	}));
 
-	app.get('/login/loginMessage', function(req, res) {
-  		res.json({message: req.flash('loginMessage')});
+	// route to test if the user is logged in or not 
+	app.get('/loggedin', function(req, res) { 
+		res.send(req.isAuthenticated() ? req.user : '0'); 
+	}); 
+
+	// route to log in 
+	app.post('/login', passport.authenticate('local-login'), function(req, res) { 
+		res.send(req.user); 
 	});
 
-	// process the login form
-	app.post('/login', passport.authenticate('local-login', {
-		successRedirect : '/', // redirect to the secure profile section
-		failureRedirect : '/login', // redirect back to the login page if there is an error
-		failureFlash : true // allow flash messages
-	}));
+	// route to log out 
+	app.post('/logout', function(req, res){ 
+		req.logOut(); res.send(200); 
+	}); 
 
 	// frontend routes =========================================================
 	// route to handle all angular requests

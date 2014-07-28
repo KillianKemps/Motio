@@ -1,17 +1,26 @@
-angular.module('LoginModule', []).controller('LoginController', ['$scope','$http', function($scope, $http) {
+angular.module('LoginModule', []).controller('LoginController', ['$scope','$http', '$rootScope', '$location', function($scope, $http, $rootScope, $location) {
 
 	$scope.tagline = 'Login and make your day !';	
-
-	$http.get('/login/loginMessage').success(function(data) {
-		if(data.message != "[]"){
-			$scope.message = data.message;
-		}
-    	else {
-    		$scope.message = "";
-    	}
-	});
-
-	/*$scope.message = message;*/
 	
+	// This object will be filled by the form
+	$scope.user = {};
+
+	// Register the login() function
+	$scope.login = function(){
+		$http.post('/login', {
+		  	email: $scope.user.email,
+		  	password: $scope.user.password,
+		})
+		.success(function(user){
+		  	// No error: authentication OK
+		  	$rootScope.message = 'Authentication successful!';
+		  	$location.url('/');
+		})
+		.error(function(){
+		  	// Error: authentication failed
+		  	$rootScope.message = 'Authentication failed.';
+		  	$location.url('/login');
+		});
+	};
 
 }]);

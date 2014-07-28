@@ -5,17 +5,17 @@
 </div>
 {{message}}
 
-<form action="/login" method="post" class="form-horizontal">
+<form ng-submit="login()" class="form-horizontal">
     <div class="control-group">
     	<label class="control-label" for="inputPseudo">Email</label>
     	<div class="controls">
-    		<input type="text" id="inputPseudo" placeholder="Username" name="email">
+    		<input type="text" id="inputPseudo" placeholder="Username" name="email" ng-model="user.email">
     	</div>
     </div>
     <div class="control-group">
     	<label class="control-label" for="inputPassword">Password</label>
     	<div class="controls">
-    		<input type="password" id="inputPassword" placeholder="Password" name="password">
+    		<input type="password" id="inputPassword" placeholder="Password" name="password" ng-model="user.password">
     	</div>
     </div>
     <div class="control-group">
