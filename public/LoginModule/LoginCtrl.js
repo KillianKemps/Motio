@@ -15,6 +15,7 @@ angular.module('LoginModule', []).controller('LoginController', ['$scope','$http
 		  	// No error: authentication OK
 		  	$rootScope.message = 'Authentication successful!';
 		  	$location.url('/');
+		  	console.log(user);
 		})
 		.error(function(){
 		  	// Error: authentication failed

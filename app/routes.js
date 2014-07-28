@@ -22,16 +22,9 @@ module.exports = function(app) {
 	var user = require('./models/user.js');
 	var passport = require('passport');
 
-	app.get('/signup/signupMessage', function(req, res) {
-  		res.json({message: req.flash('signupMessage')});
+	app.post('/signup', passport.authenticate('local-signup'), function(req, res) { 
+		res.send(req.user); 
 	});
-
-	// process the signup form
-	app.post('/signup', passport.authenticate('local-signup', {
-		successRedirect : '/', // redirect to the secure profile section
-		failureRedirect : '/signup', // redirect back to the signup page if there is an error
-		failureFlash : true // allow flash messages
-	}));
 
 	// route to test if the user is logged in or not 
 	app.get('/loggedin', function(req, res) { 
