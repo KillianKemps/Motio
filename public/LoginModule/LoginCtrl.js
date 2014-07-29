@@ -1,4 +1,4 @@
-angular.module('LoginModule', []).controller('LoginController', ['$scope','$http', '$rootScope', '$location', function($scope, $http, $rootScope, $location) {
+angular.module('LoginModule', []).controller('LoginController', ['$scope','$http', '$rootScope', '$location', 'Login', function($scope, $http, $rootScope, $location, Login) {
 
 	$scope.tagline = 'Login and make your day !';	
 	
@@ -14,8 +14,8 @@ angular.module('LoginModule', []).controller('LoginController', ['$scope','$http
 		.success(function(user){
 		  	// No error: authentication OK
 		  	$rootScope.message = 'Authentication successful!';
+		  	Login.setData(user);
 		  	$location.url('/');
-		  	console.log(user);
 		})
 		.error(function(){
 		  	// Error: authentication failed

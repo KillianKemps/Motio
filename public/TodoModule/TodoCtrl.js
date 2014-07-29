@@ -1,10 +1,20 @@
-angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', function($scope, Todo) {
+angular.module('todoModule', ['ngCookies']).controller('TodoController', ['$scope','Todo', 'Login', '$cookieStore', function($scope, Todo, Login, $cookieStore) {
 
 	$scope.tagline = 'Your Future is created by what you do today not tomorrow';	
 
 	//query() returns all the entries
 	$scope.items = Todo.query(function() {
   	}); 
+
+  	$scope.user = Login.getData();
+
+  	if($scope.user != null){
+  		$cookieStore.put('user', $scope.user);
+  	}
+
+  	$scope.user = $cookieStore.get('user');
+  	
+  	console.log($cookieStore.get('user'));
 
 	$scope.addTodo = function(){
 		var item = new Todo({
