@@ -8,7 +8,6 @@ How to develop for MotivateMe:
 - Go in the git directory and issue 'vagrant up'
 - Then for setting up mongoDB do the following commands:
     'vagrant ssh'
-    'mongo'
     'curl https://raw.githubusercontent.com/creationix/nvm/v0.11.0/install.sh | bash'
     'exit'
     'vagrant ssh'
