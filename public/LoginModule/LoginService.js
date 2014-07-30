@@ -1,33 +1,22 @@
-angular.module('LoginModule').factory('Login', ['$http', /*'$cookieStore',*/ function($http/*, $cookieStore*/) {
+angular.module('LoginModule').factory('Login', ['$http', '$cookieStore', function($http, $cookieStore) {
 
-	var userData = null;
+	var userData = {};
 
-	/*userData._id = $cookieStore.get(‘userid’);
-	userData.local.email = $cookieStore.get(‘useremail’);	*/
+	userData._id = $cookieStore.get('userid');
+	userData.email = $cookieStore.get('useremail');	
 
 	return {
 		setData: function (newData){
 			userData = newData;
 			/*$cookieStore.put(‘loggedin’, ‘true’);*/
-			/*$cookieStore.put(‘userid’, userData._id);
-			$cookieStore.put(‘useremail’, userData.local.email);*/
+			$cookieStore.put('userid', userData._id);
+			userData.email = userData.local.email;
+			$cookieStore.put('useremail', userData.email);
 		},
 		getData: function(){
-			console.log(userData);
+			//console.log(userData);
 
 			return userData;			
 		}
 	}
-
-  /*var Session = {
-    data: {},
-    saveSession: function() {  },
-    updateSession: function() { 
-      Session.data = $http.get('session.json').then(function(r) { return r.data;});
-    }
-  };
-  Session.updateSession();
-  return Session; 
-*/
-
 }]);

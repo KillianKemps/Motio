@@ -1,1 +1,1 @@
-angular.module('motivateMeApp', ['ngRoute', 'ngResource', 'appRoutes', 'ui.bootstrap', 'todoModule', 'administrationModule', 'LoginModule', 'SignupModule']);
+angular.module('motivateMeApp', ['ngRoute', 'ngResource', 'ngCookies','appRoutes', 'ui.bootstrap', 'todoModule', 'administrationModule', 'LoginModule', 'SignupModule']);
