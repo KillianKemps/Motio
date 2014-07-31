@@ -33,6 +33,7 @@ var userSchema = mongoose.Schema({
 });
 
 // methods ======================
+
 // generating a hash
 userSchema.methods.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
@@ -44,4 +45,16 @@ userSchema.methods.validPassword = function(password) {
 };
 
 // create the model for users and expose it to our app
-module.exports = mongoose.model('User', userSchema);
+User = mongoose.model('User', userSchema);
+
+/**
+ * Find user by id and store it in the request
+ */
+exports.user = function(req, res, next, id) {
+  User.findById(id, function(err, user) {
+    if (err) return next(err);
+    if (!user) return next(new Error('Failed to load user' + id));
+    req.user = user;
+    next();
+  });
+};

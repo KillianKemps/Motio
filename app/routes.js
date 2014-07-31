@@ -1,6 +1,7 @@
 module.exports = function(app) {
 
 	//app.engine('html', require('ejs').renderFile);
+	var user = require('./models/user.js');
 
 	/**************/
 	/** Todo API **/
@@ -8,8 +9,9 @@ module.exports = function(app) {
 	var todo = require('./models/todo');
 
 	app.param('todoId', todo.todo);
+	app.param('userId', user.user);
  
-	app.get('/api/todo', todo.all);
+	app.get('/api/:userId/todo', todo.all);
 	app.get('/api/todo/:todoId', todo.show)
 	app.post('/api/todo', todo.create);
 	app.put('/api/todo/:todoId', todo.update);
@@ -18,8 +20,7 @@ module.exports = function(app) {
 	// server routes ===========================================================
 	// handle things like api calls
 	// authentication routes
-	// 
-	var user = require('./models/user.js');
+	
 	var passport = require('passport');
 
 	app.post('/signup', passport.authenticate('local-signup'), function(req, res) { 

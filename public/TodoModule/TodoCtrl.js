@@ -2,12 +2,11 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 
 	$scope.tagline = 'Your Future is created by what you do today not tomorrow';	
 
-	//query() returns all the entries
-	$scope.items = Todo.query(function() {
-  	}); 
-
 	// getting user data from the service
   	$scope.user = Login.getData();
+
+	//query() returns all the entries
+	$scope.items = Todo.query({userId: $scope.user._id}); 
 
 	$scope.addTodo = function(){
 		var item = new Todo({
