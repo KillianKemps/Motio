@@ -45,13 +45,13 @@ userSchema.methods.validPassword = function(password) {
 };
 
 // create the model for users and expose it to our app
-User = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);
 
 /**
  * Find user by id and store it in the request
  */
-exports.user = function(req, res, next, id) {
-  User.findById(id, function(err, user) {
+module.exports.user = function(req, res, next, id) {
+  module.exports.findById(id, function(err, user) {
     if (err) return next(err);
     if (!user) return next(new Error('Failed to load user' + id));
     req.user = user;
