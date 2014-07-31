@@ -12,10 +12,10 @@ module.exports = function(app) {
 	app.param('userId', user.user);
  
 	app.get('/api/:userId/todo', todo.all);
-	app.get('/api/todo/:todoId', todo.show)
-	app.post('/api/todo', todo.create);
-	app.put('/api/todo/:todoId', todo.update);
-	app.del('/api/todo/:todoId', todo.remove);
+	app.get('/api/:userId/todo/:todoId', todo.show)
+	app.post('/api/:userId/todo', todo.create);
+	app.put('/api/:userId/todo/:todoId', todo.update);
+	app.del('/api/:userId/todo/:todoId', todo.remove);
 
 	// server routes ===========================================================
 	// handle things like api calls

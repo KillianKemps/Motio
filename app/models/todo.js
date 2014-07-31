@@ -8,14 +8,15 @@ var todoSchema = mongoose.Schema({
 	text: String,
 	done: Boolean,
 	priority: Number,
-  dueDate: Date
+  dueDate: Date,
+  owner: String
 });
 
 
 var Todo = mongoose.model('Todo', todoSchema);
 
 exports.all = function(req, res){
-		Todo.find().exec(function(err, todos) {
+		Todo.find({owner:req.params.userId}).exec(function(err, todos) {
 		if (err) {
 			res.render('error', {status: 500});
 		} else {
@@ -47,8 +48,7 @@ exports.show = function(req, res) {
  * Create a todo
  */
 exports.create = function(req, res) {
-  var todo = new Todo(req.body);
- 
+  var todo = new Todo(req.body);  
   todo.save(function(err) {
     if (err) return res.json(500, err);
     res.json(todo);

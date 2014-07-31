@@ -8,15 +8,18 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 	//query() returns all the entries
 	$scope.items = Todo.query({userId: $scope.user._id}); 
 
+	console.log($scope.items);
+
 	$scope.addTodo = function(){
 		var item = new Todo({
+			owner: $scope.user._id,
 			text: $scope.formTodoText,
 			priority: $scope.formTodoPriority,
 			dueDate: $scope.formTodoDueDate,
 			done: false
 		});
 
-		Todo.save(item, function (response) {
+		Todo.save({userId: $scope.user._id}, item, function (response) {
 			// store this item who now got a mongo id
 			$scope.items.push(response);
 		});
@@ -25,12 +28,12 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 	}
 
 	$scope.updateTodo = function(_id, element, update, angularId){
-		$scope.item = Todo.get({ todoId: _id }, function() {
+		$scope.item = Todo.get({ userId: $scope.user._id, todoId: _id }, function() {
 			// $scope.item is fetched from server and is an instance of Todo
 			if(element == 'done'){
 				$scope.item.done = update;
 
-				$scope.item.$update(function(response) {
+				$scope.item.$update({userId: $scope.user._id}, function(response) {
 				});
 				// if the task is completed then delete
 				if(update == true)
@@ -43,13 +46,13 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 				// refresh the view
 				$scope.items[angularId].priority = update;
 				console.log(update);
-				$scope.item.$update(function(response) {
+				$scope.item.$update({userId: $scope.user._id}, function(response) {
 				});
 			}
 			else if(element == 'dueDate'){
 				$scope.item.dueDate = update;
 				console.log(update);
-				$scope.item.$update(function(response) {
+				$scope.item.$update({userId: $scope.user._id}, function(response) {
 				});
 			}
 			else{
@@ -61,7 +64,7 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 
 	$scope.removeTodo = function(item, id){
 		// remove item from database
-		item.$remove(function() {
+		item.$remove({userId: $scope.user._id}, function() {
 		});
 		// remove item from view
 		$scope.items.splice(id, 1)
