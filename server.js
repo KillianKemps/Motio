@@ -69,7 +69,8 @@ app.configure(function() {
 	app.use(session({ 
 		secret: 'thisisasessionsecret',
 		saveUninitialized: true,
-        resave: true })); // session secret
+        resave: true,
+        cookie: {httpOnly: true, secure: true} })); // session secret
 	app.use(passport.initialize());
 	app.use(passport.session()); // persistent login sessions
 	app.use(flash()); // use connect-flash for flash messages stored in session
