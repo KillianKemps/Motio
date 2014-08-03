@@ -6,6 +6,9 @@ var passport 	= require('passport');
 var session     = require('express-session');
 var flash 	 	= require('connect-flash');
 var cookieParser = require('cookie-parser');
+var morgan         = require('morgan');
+var bodyParser     = require('body-parser');
+var methodOverride = require('method-override');
 
 // configuration ===========================================
 	
@@ -59,11 +62,10 @@ db.once('open', function callback () {
 
 });
 
-app.configure(function() {
 	app.use(express.static(__dirname + '/public')); 	// set the static files location /public/img will be /img for users
-	app.use(express.logger('dev')); 					// log every request to the console
-	app.use(express.bodyParser()); 						// pull information from html in POST
-	app.use(express.methodOverride()); 					// simulate DELETE and PUT
+	app.use(morgan('dev')); 					// log every request to the console
+	app.use(bodyParser()); 						// pull information from html in POST
+	app.use(methodOverride()); 					// simulate DELETE and PUT
 	
 	// required for passport
 	app.use(session({ 
@@ -74,7 +76,6 @@ app.configure(function() {
 	app.use(passport.session()); // persistent login sessions
 	app.use(flash()); // use connect-flash for flash messages stored in session
 	app.use(cookieParser()); // read cookies (needed for auth)
-});
 
 // routes ==================================================
 require('./app/routes')(app); // pass our application into our routes

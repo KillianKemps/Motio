@@ -19,6 +19,7 @@ module.exports = function(config) {
       'public/libs/angular-route/angular-route.js',
       'public/libs/angular-resource.min.js',
       'public/libs/angular-mocks.js',
+      'public/libs/angular-cookies.js',
       'public/libs/ui-bootstrap-tpls-0.11.0.min.js',
       'public/TodoModule/TodoCtrl.tests.js',
       'public/js/app.js',

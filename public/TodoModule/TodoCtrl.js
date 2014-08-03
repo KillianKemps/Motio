@@ -8,8 +8,6 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 	//query() returns all the entries
 	$scope.items = Todo.query({userId: $scope.user._id}); 
 
-	console.log($scope.items);
-
 	$scope.addTodo = function(){
 		var item = new Todo({
 			owner: $scope.user._id,
