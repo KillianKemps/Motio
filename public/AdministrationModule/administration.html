@@ -8,7 +8,13 @@
 <form class="jumbotron">
 <ul>
 	<li>Username: <b>{{username}}</b> <button class="btn btn-info btn-mini">Edit</button></li>
-	<li><button class="btn btn-warning btn-mini">Change Password</button></li>
+	<li><button class="btn btn-warning btn-mini" ng-click="inputPassword = !inputPassword">Change Password</button>
+		<ul ng-show="inputPassword">
+			<li>Enter your old password: <input type="text"></li>
+			<li>Enter your new password: <input type="text"></li>
+			<li>Confirm your new password: <input type="text"></li>
+		</ul>
+	</li>
 	<li>Email: <b>{{email}}</b> <button class="btn btn-info btn-mini">Edit</button></li>
 	<li> 
 		<label class="checkbox">
