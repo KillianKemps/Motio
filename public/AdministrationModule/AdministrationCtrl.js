@@ -1,4 +1,4 @@
-angular.module('administrationModule', []).controller('AdministrationController', function($scope) {
+angular.module('administrationModule', []).controller('AdministrationController', function($scope, $http, Login) {
 
 	$scope.tagline = 'Here\'s where you will be able to change parameters !';
 
@@ -25,5 +25,30 @@ angular.module('administrationModule', []).controller('AdministrationController'
   	];
 
   	$scope.kernelversion = '0.1.0';
+
+    $scope.changePassword = function(){
+        if($scope.newPassword == $scope.newPasswordConfirmed){
+            console.log('password confirmed');
+        }
+        else{
+            console.log('Problem with passwords');
+        }
+
+        $scope.user = Login.getData();
+
+        $http.post('/login', {
+            email: $scope.user.email,
+            password: $scope.oldPassword,
+        })
+        .success(function(user){
+            // No error: authentication OK
+            console.log('login success');
+
+        })
+        .error(function(){
+            // Error: authentication failed
+            $scope.passwordMessage = 'Password entered is wrong';
+        });
+    }
 
 });

@@ -9,11 +9,19 @@
 <ul>
 	<li>Username: <b>{{username}}</b> <button class="btn btn-info btn-mini">Edit</button></li>
 	<li><button class="btn btn-warning btn-mini" ng-click="inputPassword = !inputPassword">Change Password</button>
-		<ul ng-show="inputPassword">
-			<li>Enter your old password: <input type="text"></li>
-			<li>Enter your new password: <input type="text"></li>
-			<li>Confirm your new password: <input type="text"></li>
-		</ul>
+		<div ng-show="inputPassword">
+		<form ng-submit="changePassword()">
+			<ul>
+				{{ passwordMessage }}
+				<li>Enter your old password: <input type="text" name="oldPassword" ng-model="oldPassword"></li>
+				<li>Enter your new password: <input type="text" name="newPassword" ng-model="newPassword"></li>
+				<li>Confirm your new password: <input type="text" name ="newPasswordConfirmed" ng-model="newPasswordConfirmed"></li>
+			</ul>
+			<button type="submit" class="btn btn-primary" ng-click="changePassword()">Save changes</button>
+			
+		</form>
+	</div>
+		
 	</li>
 	<li>Email: <b>{{email}}</b> <button class="btn btn-info btn-mini">Edit</button></li>
 	<li> 
