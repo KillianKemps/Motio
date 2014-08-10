@@ -1,2 +1,123 @@
-body { padding-top:30px; }
-.form-horizontal{background-color: gray; padding: 10px 20px;}
+#header_back {
+    position: absolute;
+    height: 230px;
+    width: 100%;
+    background-color: #000000;
+    opacity: 0.17;
+}
+#user_header {
+    height: 230px;
+    background: url(../img/background.png) no-repeat;
+    background-size: cover;
+    position: relative;
+}
+#user_header figure, #user_header nav {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+}
+#user_header figure {
+    text-align: center;
+    padding: 15px 0;
+    height: calc(100% - 65px);
+}
+
+
+
+
+.r-hex {
+    overflow: hidden;
+    display: inline-block;
+    margin: 2px;
+    width: 105px;
+    height: 95px;
+    transform: rotate(-30deg) skewX(30deg);
+    border-radius: 12px;
+}
+.r-hex *, .r-hex *:before {
+    display: block;
+    overflow: hidden;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+}
+.r-hex-inner {
+    transform: skewX(-30deg) rotate(60deg) skewX(30deg);
+}
+.r-hex-inner-2 {
+    transform: skewX(-30deg) rotate(60deg) skewX(30deg);
+    content: '';
+}
+.r-hex-inner-2:before {
+    content: '';
+    height: 100px;
+    transform: skewX(-30deg) rotate(-90deg);
+    background-image: url(../img/helmet_dude.jpg);
+    background-size: cover;
+    margin-left: -2px;
+}
+
+.rhex {
+  overflow: hidden;
+  display: inline-block;
+  margin: 0;
+  width: 108px;
+  height: 98px;
+  transform: rotate(-30deg) skewX(30deg) translate(-29.5%, -27.5%);
+  border-radius: 12px;
+  position: absolute;
+  left: 50%;
+}
+.rhex *, .rhex *:before {
+  display: block;
+  overflow: hidden;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+}
+.rhex-inner {
+  transform: skewX(-30deg) rotate(60deg) skewX(30deg);
+}
+.rhex-inner:before {
+  transform: skewX(-30deg) rotate(60deg) skewX(30deg);
+  background: #ffffff;
+  content: '';
+}
+
+
+
+
+#user_header figcaption {
+    color: #ffffff;
+}
+#user_header figcaption h1 {
+    font-size: 27px;
+    font-weight: lighter;
+}
+#user_header nav {
+    background-color: #ff910e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+#user_header nav ul {
+    margin: 0;
+}
+#user_header nav li, #user_header nav i {
+    line-height: 35px;
+}
+#user_header nav i+i {
+    margin-left: 28px;
+}
+#user_header nav li {
+    margin-right: 35px;
+}
+#user_header nav li:last-child {
+    margin-right: 0;
+}

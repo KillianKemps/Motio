@@ -1,12 +1,12 @@
 angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 'Login', function($scope, Todo, Login) {
 
-	$scope.tagline = 'Your Future is created by what you do today not tomorrow';	
+	$scope.tagline = 'Your Future is created by what you do today not tomorrow';
 
 	// getting user data from the service
   	$scope.user = Login.getData();
 
 	//query() returns all the entries
-	$scope.items = Todo.query({userId: $scope.user._id}); 
+	$scope.items = Todo.query({userId: $scope.user._id});
 
 	$scope.addTodo = function(){
 		var item = new Todo({
@@ -18,10 +18,11 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 		});
 
 		Todo.save({userId: $scope.user._id}, item, function (response) {
+		console.log('test');
 			// store this item who now got a mongo id
 			$scope.items.push(response);
 		});
-		
+
 		$scope.formTodoText = '';
 	}
 
@@ -56,8 +57,8 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 			else{
 				console.log("Error: No such update");
 			}
-			
-		});	
+
+		});
 	}
 
 	$scope.removeTodo = function(item, id){
@@ -89,7 +90,7 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 	$scope.toggleMin = function() {
 		$scope.minDate = $scope.minDate ? null : new Date();
 	};
-	
+
 	$scope.toggleMin();
 	$scope.opened = [];
 

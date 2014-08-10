@@ -7,8 +7,8 @@
 	<title>Starter Node and Angular</title>
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/normalize.css">
 
 	<!-- JS -->
 	<script src="libs/angular/angular.min.js"></script>
@@ -22,7 +22,7 @@
 	<script src="TodoModule/TodoService.js"></script>
 	<script src="AdministrationModule/AdministrationCtrl.js"></script>
 	<script src="AdministrationModule/AdministrationService.js"></script>
-	
+
 	<script src="LoginModule/LoginCtrl.js"></script>
 	<script src="LoginModule/LoginService.js"></script>
 	<script src="SignupModule/SignupCtrl.js"></script>
@@ -32,18 +32,6 @@
 </head>
 <body ng-app="motivateMeApp">
 <div class="container">
-	
-	<!-- HEADER -->
-	<nav class="navbar navbar-inverse">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/">MotivateMe</a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li><a href="/login">Login</a></li>
-			<li><a href="/signup">Sign up</a></li>
-			<li><a href="/administration">Administration</a></li>
-		</ul>
-	</nav>
 
 	<!-- ANGULAR DYNAMIC CONTENT -->
 	<div ng-view></div>

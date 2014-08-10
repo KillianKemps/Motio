@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 /***
- * Todo Schema 
+ * Todo Schema
  */
 
 var todoSchema = mongoose.Schema({
@@ -48,7 +48,8 @@ exports.show = function(req, res) {
  * Create a todo
  */
 exports.create = function(req, res) {
-  var todo = new Todo(req.body);  
+  console.log('test');
+  var todo = new Todo(req.body);
   todo.save(function(err) {
     if (err) return res.json(500, err);
     res.json(todo);
@@ -70,9 +71,9 @@ exports.update = function(req, res) {
  */
 exports.remove = function(req, res) {
   var todo = req.todo;
- 
+
   todo.remove(function(err) {
     if (err) return res.json(500, err);
-    res.json(todo);   
+    res.json(todo);
   });
 };
