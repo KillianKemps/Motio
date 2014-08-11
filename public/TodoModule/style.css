@@ -1,3 +1,16 @@
+/**
+* @site     Motio
+* @version    0.1.0
+* @lastmodified 2014-08-11
+*/
+
+/** --- = @section TYPOGRAPHY ---*/
+html{
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f7f7f7;
+}
+
+/** --- = @section LAYOUT---*/
 #header_back {
     position: absolute;
     height: 230px;
@@ -21,10 +34,7 @@
     padding: 15px 0;
     height: calc(100% - 65px);
 }
-
-
-
-
+/** --- = @section COMPONENT ---*/
 .r-hex {
     overflow: hidden;
     display: inline-block;
@@ -121,3 +131,20 @@
 #user_header nav li:last-child {
     margin-right: 0;
 }
+input[type="checkbox"]{
+  display: none;
+}
+input[type="checkbox"] + label span {
+    display:inline-block;
+    width:21px;
+    height:21px;
+    background-color: #dedede;
+}
+/** --- = @section IE ---*/
+
+
+
+
+
+
+

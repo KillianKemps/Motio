@@ -37,7 +37,8 @@
 
     <ul class="unstyled">
         <li ng-repeat="(id, item) in items" >
-            <input ng-model="item.done" ng-change="updateTodo(item._id, 'done', item.done, id)" type="checkbox" />  {{item.text}}
+            <input ng-model="item.done" ng-change="updateTodo(item._id, 'done', item.done, id)" type="checkbox" id="checkbox{{id}}">
+            <label for="checkbox{{id}}"><span></span></label>  {{item.text}}
 
             <div ng-controller="DropdownController" class="btn-group" dropdown is-open="status.isopen[$index]">
                 <button type="button" class="btn btn-primary dropdown-toggle" ng-model-instant>
