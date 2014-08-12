@@ -1,10 +1,10 @@
 {
-  "name": "motivateme",
+  "name": "motio",
   "main": "server.js",
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/KillianKemps/MotivateMe.git"
+    "url": "git://github.com/KillianKemps/Motio.git"
   },
   "dependencies": {
     "express": "~4.0.0",
