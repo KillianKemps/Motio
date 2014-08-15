@@ -140,6 +140,22 @@ input[type="checkbox"] + label span {
     height:21px;
     background-color: #dedede;
 }
+.todo-item{
+  width: 80%;
+  margin: 0 auto;
+  height: 60px;
+}
+.todo-item p{
+  margin: 0 5px;
+  width: 80%;
+  display: inline-block;
+}
+.todo-item div{
+  display: inline;
+}
+/*.todo-item .dropdown-menu, .todo-item .datepicker, .todo-item .delete-button{
+  display: none;
+}*/
 /** --- = @section IE ---*/
 
 
