@@ -132,9 +132,9 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 		$scope.status.isopen[id] = !$scope.status.isopen[id];
 	};
 
-	$scope.addPriority = function(priorityLevel){
+	/*$scope.addPriority = function(priorityLevel){
 		$scope.formTodoPriority = priorityLevel;
-	};
+	};*/
 
 }]);
 

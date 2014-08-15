@@ -78,17 +78,18 @@
 
         Todo : <input type="text" ng-model="formTodoText" ng-model-instant><br />
 
-        <div ng-controller="DropdownController" class="btn-group" dropdown is-open="status.isopen[-1]">
-            <button type="button" class="btn btn-primary dropdown-toggle">
-                Priority: {{formTodoPriority}} <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#" ng-click="addPriority(0)">No priority</a></li>
-                <li><a href="#" ng-click="addPriority(1)">Priority 1</a></li>
-                <li><a href="#" ng-click="addPriority(2)">Priority 2</a></li>
-                <li><a href="#" ng-click="addPriority(3)">Priority 3</a></li>
-            </ul>
-        </div><br />
+        <div class="priorities-choice">
+                    <button class="button-priorities" ng-model-instant ng-click="addTodoDisplayPriorities = ! addTodoDisplayPriorities">
+                        <i class="fa fa-flag" ng-class="{priority0: formTodoPriority == 0, priority1: formTodoPriority == 1, priority2: formTodoPriority == 2, priority3: formTodoPriority == 3}"></i><span class="caret"></span>
+                    </button>
+                    <ul class="dropdown priorities-dropdown" role="menu" ng-show="addTodoDisplayPriorities">
+                        <li><a href="#" ng-click="formTodoPriority = 0; addTodoDisplayPriorities=false"> <i class="fa fa-flag priority0"></i></a></li>
+                        <li><a href="#" ng-click="formTodoPriority = 1; addTodoDisplayPriorities=false"> <i class="fa fa-flag priority1"></i></a></li>
+                        <li><a href="#" ng-click="formTodoPriority = 2; addTodoDisplayPriorities=false"> <i class="fa fa-flag priority2"></i></a></li>
+                        <li><a href="#" ng-click="formTodoPriority = 3; addTodoDisplayPriorities=false"> <i class="fa fa-flag priority3"></i></a></li>
+                    </ul>
+                </div>
+        <br />
 
         Due date:
         <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model-instant ng-model="formTodoDueDate" is-open="formTodoOpened"  ng-click="formTodoDatepickerOpen($event)" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="Close" />

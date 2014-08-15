@@ -168,7 +168,7 @@ input[type="checkbox"] + label span:hover {
   width: 80%;
   display: inline-block;
 }
-.todo-item .priorities-choice, .todo-item .datepicker{
+.priorities-choice, .datepicker{
   display: inline-block;
 }
 .todo-item-content{
@@ -178,7 +178,7 @@ input[type="checkbox"] + label span:hover {
 /*.todo-item .dropdown-menu, .todo-item .datepicker, .todo-item .delete-button{
   display: none;
 }*/
-.todo-item .dropdown{
+.dropdown{
   z-index: 1;
   background-color: #999999;
 }
