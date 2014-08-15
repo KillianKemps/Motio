@@ -36,44 +36,41 @@
 <div>
 
     <ul>
-        <li class="todo-item" ng-repeat="(id, item) in items" >
-            <input ng-model="item.done" ng-change="updateTodo(item._id, 'done', item.done, id)" type="checkbox" id="checkbox{{id}}">
-            <label for="checkbox{{id}}"><span></span></label>
-            <p>{{item.text}}</p>
+        <li class="todo-item" ng-repeat="(id, item) in items" ng-mouseenter="hoverTodoItem = true" ng-mouseleave="hoverTodoItem = false" >
+            <div class="todo-item-content">
+                <input ng-model="item.done" ng-change="updateTodo(item._id, 'done', item.done, id)" type="checkbox" id="checkbox{{id}}">
+                <label for="checkbox{{id}}"><span ng-class="{hoverCheckbox: hoverTodoItem}"></span></label>
+                <p>{{item.text}}</p>
 
-            <div ng-controller="DropdownController" class="btn-group" dropdown is-open="status.isopen[$index]">
-                <button type="button" class="btn btn-primary dropdown-toggle" ng-model-instant ng-click="displayPriorities = ! displayPriorities">
-                    Priority: {{item.priority}} <span class="caret"></span>
-                </button>
-                <ul class="priorities-dropdown" role="menu" ng-show="displayPriorities">
-                    <li><a href="#" ng-click="updateTodo(item._id, 'priority', 0, id)"> No priority</a></li>
-                    <li><a href="#" ng-click="updateTodo(item._id, 'priority', 1, id)"> Priority 1</a></li>
-                    <li><a href="#" ng-click="updateTodo(item._id, 'priority', 2, id)"> Priority 2</a></li>
-                    <li><a href="#" ng-click="updateTodo(item._id, 'priority', 3, id)"> Priority 3</a></li>
-                </ul>
-            </div>
+                <div class="priorities-choice">
+                    <button class="button-priorities" ng-model-instant ng-click="displayPriorities = ! displayPriorities">
+                        <i class="fa fa-flag" ng-class="{priority0: item.priority == 0, priority1: item.priority == 1,priority2: item.priority == 2, priority3: item.priority == 3}"></i><span class="caret"></span>
+                    </button>
+                    <ul class="dropdown priorities-dropdown" role="menu" ng-show="displayPriorities">
+                        <li><a href="#" ng-click="updateTodo(item._id, 'priority', 0, id); displayPriorities=false"> <i class="fa fa-flag priority0"></i></a></li>
+                        <li><a href="#" ng-click="updateTodo(item._id, 'priority', 1, id); displayPriorities=false"> <i class="fa fa-flag priority1"></i></a></li>
+                        <li><a href="#" ng-click="updateTodo(item._id, 'priority', 2, id); displayPriorities=false"> <i class="fa fa-flag priority2"></i></a></li>
+                        <li><a href="#" ng-click="updateTodo(item._id, 'priority', 3, id); displayPriorities=false"> <i class="fa fa-flag priority3"></i></a></li>
+                    </ul>
+                </div>
 
-            <button ng-click="displayDropdownMenu = ! displayDropdownMenu">...</button>
+                <button ng-click="displayDropdownMenu = ! displayDropdownMenu">...</button>
 
-            <ul class="dropdown-menu" ng-show="displayDropdownMenu">
-                <li>
-                    <div class="datepicker">
-                        Due date:
-                        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="item.dueDate" is-open="opened[$index]" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="
-                        Close" ng-change="updateTodo(item._id, 'dueDate', item.dueDate, id)" ng-click="open($event, id)" />
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="open($event, id)"><i class="glyphicon glyphicon-calendar"></i></button>
-                        </span></div>
-                    </li>
+                <ul class=" dropdown dropdown-menu" ng-show="displayDropdownMenu">
                     <li>
-                        <button class="delete-button" ng-click="removeTodo(item, id)">Delete</button>
-                    </li>
-            </ul>
-
-            
-            
-
-            
+                        <div class="datepicker">
+                            Due date:
+                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="item.dueDate" is-open="opened[$index]" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="
+                            Close" ng-change="updateTodo(item._id, 'dueDate', item.dueDate, id)" ng-click="open($event, id)" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open($event, id)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span></div>
+                        </li>
+                        <li>
+                            <button class="delete-button" ng-click="removeTodo(item, id)">Delete</button>
+                        </li>
+                </ul>
+            </div>     
         </li>
     </ul>
     <form class="form-horizontal">

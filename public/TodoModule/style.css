@@ -9,6 +9,9 @@ html{
   font-family: "Segoe UI", sans-serif;
   background-color: #f7f7f7;
 }
+ul{
+  list-style-type: none;
+}
 
 /** --- = @section LAYOUT---*/
 #header_back {
@@ -139,23 +142,70 @@ input[type="checkbox"] + label span {
     width:21px;
     height:21px;
     background-color: #dedede;
+    position: relative;
+    top: 4px;
+}
+input[type="checkbox"] + label span:hover {
+  cursor: pointer;
+}
+.hoverCheckbox{
+  border: 4px solid #999999;
+  width: 13px !important;
+  height: 13px !important;
 }
 .todo-item{
   width: 80%;
   margin: 0 auto;
   height: 60px;
+  height: 35px;
+  padding: 15px 20px 10px;
+}
+.todo-item:hover{
+  background-color: #dedede;
 }
 .todo-item p{
   margin: 0 5px;
   width: 80%;
   display: inline-block;
 }
-.todo-item div{
-  display: inline;
+.todo-item .priorities-choice, .todo-item .datepicker{
+  display: inline-block;
+}
+.todo-item-content{
+  margin: auto 0;
+  height: 24px;
 }
 /*.todo-item .dropdown-menu, .todo-item .datepicker, .todo-item .delete-button{
   display: none;
 }*/
+.todo-item .dropdown{
+  z-index: 1;
+  background-color: #999999;
+}
+.dropdown-menu{
+  width: 170px;
+}
+.fa-flag.priority0{
+  color: #dedede;
+}
+.fa-flag.priority1{
+  color: #95e645;
+}
+.fa-flag.priority2{
+  color: #ff910e;
+}
+.fa-flag.priority3{
+  color: #e64545;
+}
+.priorities-dropdown {
+    padding: 5px;
+    width: 20px;
+    position: absolute;
+}
+.button-priorities{
+  background-color: transparent;
+  border: none;
+}
 /** --- = @section IE ---*/
 
 

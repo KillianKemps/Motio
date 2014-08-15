@@ -12,7 +12,7 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 		var item = new Todo({
 			owner: $scope.user._id,
 			text: $scope.formTodoText,
-			priority: $scope.formTodoPriority,
+			priority: $scope.formTodoPriority || 0,
 			dueDate: $scope.formTodoDueDate,
 			done: false
 		});
