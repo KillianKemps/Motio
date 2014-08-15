@@ -17,6 +17,20 @@ var dbconfig = require('./config/db');
 
 
 var port = process.env.PORT || 8080; // set our port
+
+var mongo = require('mongodb');
+
+var mongoUri = process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/mydb';
+
+mongo.Db.connect(mongoUri, function (err, db) {
+  db.collection('mydocs', function(er, collection) {
+    collection.insert({'mykey': 'myvalue'}, {safe: true}, function(er,rs) {
+    });
+  });
+});
+
 mongoose.connect(dbconfig.url, function(err, dbconfig) {
   if(!err) {
     console.log("We are connected to mongoDB");
