@@ -54,22 +54,44 @@
                     </ul>
                 </div>
 
-                <button class="button-more" ng-click="displayDropdownMenu = ! displayDropdownMenu">...</button>
+                <div class="more-choice">
+                    <button class="button-more" ng-class="{buttonMoreActive: displayDropdownMenu}" ng-click="displayDropdownMenu = ! displayDropdownMenu"><i class="fa fa-ellipsis-h"></i></button>
 
-                <ul class=" dropdown dropdown-menu" ng-show="displayDropdownMenu">
-                    <li>
-                        <div class="datepicker">
-                            Due date:
-                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="item.dueDate" is-open="opened[$index]" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="
-                            Close" ng-change="updateTodo(item._id, 'dueDate', item.dueDate, id)" ng-click="open($event, id)" />
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-default" ng-click="open($event, id)"><i class="glyphicon glyphicon-calendar"></i></button>
-                            </span></div>
+                    <ul class=" dropdown dropdown-menu" ng-show="displayDropdownMenu">
+                        <li>
+                            <i class="fa fa-pencil"></i>Modify task
+                        </li>
+                        <li><button is-open="opened[$index]" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="
+                                Close" ng-change="updateTodo(item._id, 'dueDate', item.dueDate, id)" ng-click="open($event, id)"><i class="fa fa-calendar"></i> Change deadline</button>
+                                <div class="datepicker">
+                                Due date:
+                                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="item.dueDate" is-open="opened[$index]" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="
+                                Close" ng-change="updateTodo(item._id, 'dueDate', item.dueDate, id)" ng-click="open($event, id)" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event, id)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span></div>
+                            <ul>
+                                <li><i class="fa fa-clock-o"></i> Later today</li>
+                                <li><i class="fa fa-repeat"></i> Tomorrow</li>
+                            </ul>
+                        </li>
+                        <li><i class="fa fa-flag"></i>Change priority level
+                            <ul>
+                                <li><a href="#" ng-click="updateTodo(item._id, 'priority', 0, id); displayPriorities=false"> <i class="fa fa-flag priority0"></i></a></li>
+                                <li><a href="#" ng-click="updateTodo(item._id, 'priority', 1, id); displayPriorities=false"> <i class="fa fa-flag priority1"></i></a></li>
+                                <li><a href="#" ng-click="updateTodo(item._id, 'priority', 2, id); displayPriorities=false"> <i class="fa fa-flag priority2"></i></a></li>
+                                <li><a href="#" ng-click="updateTodo(item._id, 'priority', 3, id); displayPriorities=false"> <i class="fa fa-flag priority3"></i></a></li>
+                            </ul>
                         </li>
                         <li>
-                            <button class="delete-button" ng-click="removeTodo(item, id)">Delete</button>
+                            <i class="fa fa-filter"></i> Change filters
                         </li>
-                </ul>
+                        <li>
+                            <button class="delete-button" ng-click="removeTodo(item, id)"><i class="fa fa-times-circle"></i> Delete</button>
+                        </li>
+                    </ul>
+                </div>
+                
             </div>     
         </li>
     </ul>
