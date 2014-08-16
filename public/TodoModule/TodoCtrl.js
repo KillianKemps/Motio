@@ -23,6 +23,7 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 		});
 		
 		$scope.formTodoText = '';
+		$scope.formTodoPriority = '';
 	}
 
 	$scope.updateTodo = function(_id, element, update, angularId){
@@ -43,7 +44,7 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 				$scope.item.priority = update;
 				// refresh the view
 				$scope.items[angularId].priority = update;
-				console.log(update);
+				/*console.log(update);*/
 				$scope.item.$update({userId: $scope.user._id}, function(response) {
 				});
 			}

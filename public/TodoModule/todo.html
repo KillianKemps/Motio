@@ -36,14 +36,14 @@
 <div>
 
     <ul>
-        <li class="todo-item" ng-repeat="(id, item) in items" ng-mouseenter="hoverTodoItem = true" ng-mouseleave="hoverTodoItem = false" >
+        <li class="todo-item" ng-repeat="(id, item) in items" ng-mouseenter="hoverTodoItem = true" ng-mouseleave="hoverTodoItem = false; displayPriorities = false; displayDropdownMenu = false;" >
             <div class="todo-item-content">
                 <input ng-model="item.done" ng-change="updateTodo(item._id, 'done', item.done, id)" type="checkbox" id="checkbox{{id}}">
                 <label for="checkbox{{id}}"><span ng-class="{hoverCheckbox: hoverTodoItem}"></span></label>
                 <p>{{item.text}}</p>
 
                 <div class="priorities-choice">
-                    <button class="button-priorities" ng-model-instant ng-click="displayPriorities = ! displayPriorities">
+                    <button class="button-priorities" ng-class="{buttonPrioritiesActive: displayPriorities}" ng-model-instant ng-click="displayPriorities = ! displayPriorities">
                         <i class="fa fa-flag" ng-class="{priority0: item.priority == 0, priority1: item.priority == 1,priority2: item.priority == 2, priority3: item.priority == 3}"></i><span class="caret"></span>
                     </button>
                     <ul class="dropdown priorities-dropdown" role="menu" ng-show="displayPriorities">
@@ -54,7 +54,7 @@
                     </ul>
                 </div>
 
-                <button ng-click="displayDropdownMenu = ! displayDropdownMenu">...</button>
+                <button class="button-more" ng-click="displayDropdownMenu = ! displayDropdownMenu">...</button>
 
                 <ul class=" dropdown dropdown-menu" ng-show="displayDropdownMenu">
                     <li>
@@ -80,7 +80,7 @@
 
         <div class="priorities-choice">
                     <button class="button-priorities" ng-model-instant ng-click="addTodoDisplayPriorities = ! addTodoDisplayPriorities">
-                        <i class="fa fa-flag" ng-class="{priority0: formTodoPriority == 0, priority1: formTodoPriority == 1, priority2: formTodoPriority == 2, priority3: formTodoPriority == 3}"></i><span class="caret"></span>
+                        <i class="fa fa-flag priority0" ng-class="{priority0: formTodoPriority == 0, priority1: formTodoPriority == 1, priority2: formTodoPriority == 2, priority3: formTodoPriority == 3}"></i><span class="caret"></span>
                     </button>
                     <ul class="dropdown priorities-dropdown" role="menu" ng-show="addTodoDisplayPriorities">
                         <li><a href="#" ng-click="formTodoPriority = 0; addTodoDisplayPriorities=false"> <i class="fa fa-flag priority0"></i></a></li>
