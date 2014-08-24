@@ -1,14 +1,7 @@
 <div id="header_back"></div>
 <header id="user_header">
     <figure>
-        <div class='rhex'>
-            <div class='rhex-inner'></div>
-        </div>
-        <div class="r-hex">
-            <div class='r-hex-inner'>
-                <div class='r-hex-inner-2'></div>
-            </div>
-        </div>
+        <canvas id="user-pic" user="user" user-pic width="100" height="110"></canvas>
         <figcaption>
             <h1>{{user.email}}</h1>
             <p>{{user.rank}}</p>
@@ -61,8 +54,8 @@
                         <li>
                             <i class="fa fa-pencil"></i>Modify task
                         </li>
-                        <li><button is-open="opened[$index]" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="
-                                Close" ng-change="updateTodo(item._id, 'dueDate', item.dueDate, id)" ng-click="open($event, id)"><i class="fa fa-calendar"></i> Change deadline</button>
+                        <li><!-- <button is-open="opened[$index]" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="
+                                Close" ng-change="updateTodo(item._id, 'dueDate', item.dueDate, id)" ng-click="open($event, id)"><i class="fa fa-calendar"></i> Change deadline</button> -->
                                 <div class="datepicker">
                                 Due date:
                                 <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="item.dueDate" is-open="opened[$index]" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="
@@ -121,5 +114,5 @@
         <button class="btn" ng-click="addTodo()"><i class="icon-plus"></i>Add a task</button>
     </form>
 </div>
-<link rel="stylesheet" href="TodoModule/hexagone.css">
+<!-- <link rel="stylesheet" href="TodoModule/hexagone.css"> -->
 <link rel="stylesheet" href="TodoModule/style.css">

@@ -37,69 +37,6 @@ ul{
     padding: 15px 0;
     height: calc(100% - 65px);
 }
-/** --- = @section COMPONENT ---*/
-.r-hex {
-    overflow: hidden;
-    display: inline-block;
-    margin: 2px;
-    width: 105px;
-    height: 95px;
-    transform: rotate(-30deg) skewX(30deg);
-    border-radius: 12px;
-}
-.r-hex *, .r-hex *:before {
-    display: block;
-    overflow: hidden;
-    width: inherit;
-    height: inherit;
-    border-radius: inherit;
-}
-.r-hex-inner {
-    transform: skewX(-30deg) rotate(60deg) skewX(30deg);
-}
-.r-hex-inner-2 {
-    transform: skewX(-30deg) rotate(60deg) skewX(30deg);
-    content: '';
-}
-.r-hex-inner-2:before {
-    content: '';
-    height: 100px;
-    transform: skewX(-30deg) rotate(-90deg);
-    background-image: url(../img/helmet_dude.jpg);
-    background-size: cover;
-    margin-left: -2px;
-}
-
-.rhex {
-  overflow: hidden;
-  display: inline-block;
-  margin: 0;
-  width: 108px;
-  height: 98px;
-  transform: rotate(-30deg) skewX(30deg) translate(-29.5%, -27.5%);
-  border-radius: 12px;
-  position: absolute;
-  left: 50%;
-}
-.rhex *, .rhex *:before {
-  display: block;
-  overflow: hidden;
-  width: inherit;
-  height: inherit;
-  border-radius: inherit;
-}
-.rhex-inner {
-  transform: skewX(-30deg) rotate(60deg) skewX(30deg);
-}
-.rhex-inner:before {
-  transform: skewX(-30deg) rotate(60deg) skewX(30deg);
-  background: #ffffff;
-  content: '';
-}
-
-
-
-
 #user_header figcaption {
     color: #ffffff;
 }
