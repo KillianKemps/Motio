@@ -1,4 +1,4 @@
-angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 'Login', function($scope, Todo, Login) {
+angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 'Login', 'socket', function($scope, Todo, Login, socket) {
 
 	$scope.tagline = 'Your Future is created by what you do today not tomorrow';	
 
@@ -24,6 +24,8 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 		
 		$scope.formTodoText = '';
 		$scope.formTodoPriority = '';
+        
+        socket.emit('new todo');
 	}
 
 	$scope.updateTodo = function(_id, element, update, angularId){
@@ -136,6 +138,14 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 	/*$scope.addPriority = function(priorityLevel){
 		$scope.formTodoPriority = priorityLevel;
 	};*/
+    
+    /****************/
+	/** Real-Time  **/
+	/****************/
+    
+    socket.on('new todo', function(){
+        console.log('Got new todo real time !');
+    });
 
 }]);
 

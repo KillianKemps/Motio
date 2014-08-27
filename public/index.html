@@ -28,6 +28,7 @@
 	<script src="SignupModule/SignupCtrl.js"></script>
 	<script src="SignupModule/SignupService.js"></script>
 	<script src="js/appDirectives.js"></script>
+	<script src="js/SocketService.js"></script>
 	<script src="js/appRoutes.js"></script>
 	<script src="js/app.js"></script>
 </head>
@@ -38,5 +39,10 @@
 	<div ng-view></div>
 
 </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+    </script>
 </body>
 </html>

@@ -10,6 +10,9 @@ var morgan         = require('morgan');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 
+var http = require('http').Server(app);
+var io = require('socket.io')(http)
+
 // configuration ===========================================
 	
 // config files
@@ -87,6 +90,20 @@ require('./app/routes')(app); // pass our application into our routes
 require('./config/passport')(passport); // pass passport for configuration
 
 // start app ===============================================
-app.listen(port);	
+io.on('connection', function(socket){
+  console.log('a user connected');
+    
+    socket.on('new todo', function(){
+       io.emit('new todo');
+    });
+
+});
+
+
+http.listen(port, function(){
+  console.log('listening on ' + port);
+});
+
+/*app.listen(port);	*/
 console.log('Magic happens on port ' + port); 			// shoutout to the user
 exports = module.exports = app; 						// expose app

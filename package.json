@@ -7,12 +7,13 @@
     "url": "git://github.com/KillianKemps/Motio.git"
   },
   "dependencies": {
-    "express": "~4.0.0",
-    "morgan": "~1.0.0",
     "body-parser": "~1.0.0",
+    "express": "~4.0.0",
     "method-override": "~1.0.0",
+    "mongodb": "*",
     "mongoose": "~3.6.13",
-    "mongodb": "*"
+    "morgan": "~1.0.0",
+    "socket.io": "^1.0.6"
   },
   "devDependencies": {
     "karma": "~0.10"
