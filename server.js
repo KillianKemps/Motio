@@ -10,6 +10,12 @@ var morgan         = require('morgan');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 
+/*
+var cookie = require("cookie");
+var connect = require("connect");
+var utils = require("utils");
+*/
+
 var http = require('http').Server(app);
 var io = require('socket.io')(http)
 
@@ -76,7 +82,7 @@ db.once('open', function callback () {
 	app.use(methodOverride()); 					// simulate DELETE and PUT
 	
 	// required for passport
-	app.use(session({ 
+	app.use(session({
 		secret: 'thisisasessionsecret',
 		saveUninitialized: true,
         resave: true })); // session secret
@@ -90,11 +96,37 @@ require('./app/routes')(app); // pass our application into our routes
 require('./config/passport')(passport); // pass passport for configuration
 
 // start app ===============================================
+
+/*io.set('authorization', function (handshakeData, accept) {
+
+  if (handshakeData.headers.cookie) {
+
+    handshakeData.cookie = cookie.parse(handshakeData.headers.cookie);
+
+    handshakeData.sessionID = connect.utils.parseSignedCookie(handshakeData.cookie['express.sid'], 'thisisasessionsecret');
+
+    if (handshakeData.cookie['express.sid'] == handshakeData.sessionID) {
+      return accept('Cookie is invalid.', false);
+    }
+
+  } else {
+    return accept('No cookie transmitted.', false);
+  } 
+
+  accept(null, true);
+});*/
+
+ io.use(function(socket, next){
+     console.log(socket.request.headers.cookie['userid']);
+    if (socket.request.headers.cookie) return next();
+    next(new Error('Authentication error'));
+  });
+
 io.on('connection', function(socket){
   console.log('a user connected');
     
-    socket.on('new todo', function(){
-       io.emit('new todo');
+    socket.on('new todo', function(response){
+       socket.broadcast.emit('new todo', response);
     });
 
 });

@@ -20,12 +20,13 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 		Todo.save({userId: $scope.user._id}, item, function (response) {
 			// store this item who now got a mongo id
 			$scope.items.push(response);
+            socket.emit('new todo', response);
 		});
 		
 		$scope.formTodoText = '';
 		$scope.formTodoPriority = '';
         
-        socket.emit('new todo');
+        
 	}
 
 	$scope.updateTodo = function(_id, element, update, angularId){
@@ -143,8 +144,9 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 	/** Real-Time  **/
 	/****************/
     
-    socket.on('new todo', function(){
+    socket.on('new todo', function(response){
         console.log('Got new todo real time !');
+        $scope.items.push(response);
     });
 
 }]);
