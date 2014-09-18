@@ -117,7 +117,7 @@ require('./config/passport')(passport); // pass passport for configuration
 });*/
 
  io.use(function(socket, next){
-     console.log(socket.request.headers.cookie['userid']);
+     console.log(socket.request.headers.cookie);
     if (socket.request.headers.cookie) return next();
     next(new Error('Authentication error'));
   });
