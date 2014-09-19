@@ -113,22 +113,36 @@ require('./config/passport')(passport); // pass passport for configuration
     return accept('No cookie transmitted.', false);
   } 
 
-  accept(null, true);
+  accept(null, true);[3]
 });*/
 
  io.use(function(socket, next){
-     console.log(socket.request.headers.cookie);
     if (socket.request.headers.cookie) return next();
     next(new Error('Authentication error'));
   });
 
+var clients = [];
 io.on('connection', function(socket){
-  console.log('a user connected');
+    console.info('Client connected (id=' + socket.id + ').');
+    clients.push(socket);
+
+    if(socket.request.headers.cookie){
+        var cookieArray = socket.request.headers.cookie.split("; ");
+        // Join socket to a room named by his user id
+        socket.join(cookieArray[2]);
+     }
     
     socket.on('new todo', function(response){
-       socket.broadcast.emit('new todo', response);
+        socket.broadcast.to(cookieArray[2]).emit('new todo', response);
     });
-
+    
+    socket.on('disconnect', function() {
+        var index = clients.indexOf(socket);
+        if (index != -1) {
+            clients.splice(index, 1);
+            console.info('Client gone (id=' + socket.id + ').');
+        }
+    });
 });
 
 
