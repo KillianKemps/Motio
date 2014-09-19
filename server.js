@@ -10,6 +10,12 @@ var morgan         = require('morgan');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 
+/*
+var cookie = require("cookie");
+var connect = require("connect");
+var utils = require("utils");
+*/
+
 var http = require('http').Server(app);
 var io = require('socket.io')(http)
 
@@ -76,7 +82,7 @@ db.once('open', function callback () {
 	app.use(methodOverride()); 					// simulate DELETE and PUT
 	
 	// required for passport
-	app.use(session({ 
+	app.use(session({
 		secret: 'thisisasessionsecret',
 		saveUninitialized: true,
         resave: true })); // session secret
@@ -90,13 +96,57 @@ require('./app/routes')(app); // pass our application into our routes
 require('./config/passport')(passport); // pass passport for configuration
 
 // start app ===============================================
-io.on('connection', function(socket){
-  console.log('a user connected');
-    
-    socket.on('new todo', function(){
-       io.emit('new todo');
-    });
 
+/*io.set('authorization', function (handshakeData, accept) {
+
+  if (handshakeData.headers.cookie) {
+
+    handshakeData.cookie = cookie.parse(handshakeData.headers.cookie);
+
+    handshakeData.sessionID = connect.utils.parseSignedCookie(handshakeData.cookie['express.sid'], 'thisisasessionsecret');
+
+    if (handshakeData.cookie['express.sid'] == handshakeData.sessionID) {
+      return accept('Cookie is invalid.', false);
+    }
+
+  } else {
+    return accept('No cookie transmitted.', false);
+  } 
+
+  accept(null, true);[3]
+});*/
+
+ io.use(function(socket, next){
+    if (socket.request.headers.cookie) return next();
+    next(new Error('Authentication error'));
+  });
+
+var clients = [];
+io.on('connection', function(socket){
+    console.info('Client connected (id=' + socket.id + ').');
+    clients.push(socket);
+
+    if(socket.request.headers.cookie){
+        var cookieArray = socket.request.headers.cookie.split("; ");
+        // Join socket to a room named by his user id
+        socket.join(cookieArray[2]);
+     }
+    
+    socket.on('new todo', function(response){
+        socket.broadcast.to(cookieArray[2]).emit('new todo', response);
+    });
+    
+    socket.on('remove todo', function(todoObject){
+        socket.broadcast.to(cookieArray[2]).emit('remove todo', todoObject);
+    });
+    
+    socket.on('disconnect', function() {
+        var index = clients.indexOf(socket);
+        if (index != -1) {
+            clients.splice(index, 1);
+            console.info('Client gone (id=' + socket.id + ').');
+        }
+    });
 });
 
 
