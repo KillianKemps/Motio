@@ -136,6 +136,10 @@ io.on('connection', function(socket){
         socket.broadcast.to(cookieArray[2]).emit('new todo', response);
     });
     
+    socket.on('remove todo', function(todoObject){
+        socket.broadcast.to(cookieArray[2]).emit('remove todo', todoObject);
+    });
+    
     socket.on('disconnect', function() {
         var index = clients.indexOf(socket);
         if (index != -1) {

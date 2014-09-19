@@ -69,7 +69,8 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 		item.$remove({userId: $scope.user._id}, function() {
 		});
 		// remove item from view
-		$scope.items.splice(id, 1)
+		$scope.items.splice(id, 1);
+        socket.emit('remove todo', {item: item, id: id});
 	}
 
 	/****************/
@@ -145,8 +146,11 @@ angular.module('todoModule', []).controller('TodoController', ['$scope','Todo', 
 	/****************/
     
     socket.on('new todo', function(response){
-        console.log('Got new todo real time !');
         $scope.items.push(response);
+    });
+    
+    socket.on('remove todo', function(todoObject){
+        $scope.items.splice(todoObject.id, 1);
     });
 
 }]);
